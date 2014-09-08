@@ -17,7 +17,11 @@
         {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        {{#if currentUser}}
+        <li><a href="#">Sign Out</a></li>
+        {{else}}
         <li><a href="#">Sign In</a></li>
+        {{/if}}
       </ul>
     </div>
   </div>
