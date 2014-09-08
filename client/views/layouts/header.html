@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">PERM</a>
+      <a class="navbar-brand" href="{{pathFor 'public'}}">PERM</a>
     </div>
     <div class="collapse navbar-collapse" id="perm-navbar">
       <ul class="nav navbar-nav">
@@ -20,7 +20,7 @@
         {{#if currentUser}}
         <li><a href="#">Sign Out</a></li>
         {{else}}
-        <li><a href="#">Sign In</a></li>
+        <li><a href="{{pathFor 'signIn'}}">Sign In</a></li>
         {{/if}}
       </ul>
     </div>
