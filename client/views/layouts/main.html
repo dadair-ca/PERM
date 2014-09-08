@@ -8,35 +8,9 @@
 <template name="public">
 <div class="jumbotron">
   <div class="container">
-    <h1>Keep your research organized.</h1>
+    <h2>Keep your research organized.</h2>
     <p>Manage your shifts and enrollments.</p>
     <a href="#">Sign In</a>
   </div>
 </div>
-</template>
-
-<template name="header">
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#perm-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">PERM</a>
-    </div>
-    <div class="collapse navbar-collapse" id="perm-navbar">
-      <ul class="nav navbar-nav">
-        {{#if currentUser}}
-        <li><a href="#">Shifts</a></li>
-        {{/if}}
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {{> loginButtons}}
-      </ul>
-    </div>
-  </div>
-</nav>
 </template>
