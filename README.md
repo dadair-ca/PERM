@@ -1,3 +1,11 @@
+Development
+===========
+The master branch should contain stable releases, tagged with the release number (1.0.0, etc).
+
+The develop branch is where active development should take place.
+
+Please use pull requests for new features.
+
 TODO
 ====
 - [ ] Deploy to Heroku
