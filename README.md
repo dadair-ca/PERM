@@ -8,6 +8,7 @@ Please use pull requests for new features.
 
 TODO
 ====
+- [ ] Fix login buttons dropdown
 - [ ] Deploy to Heroku
 - [ ] Add testing framework
 

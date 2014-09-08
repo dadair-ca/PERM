@@ -13,38 +13,6 @@
     <a href="#">Sign In</a>
   </div>
 </div>
-<div class="study-guides">
-  <div class="container">
-    <h2>Study Guides</h2>
-    <p>Eventually, we will have links to study overviews here.</p>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="thumbnail">
-          <img src="http://placehold.it/350x150">
-        </div>
-        <div class="thumbnail">
-          <img src="http://placehold.it/350x150">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="thumbnail">
-          <img src="http://placehold.it/350x150">
-        </div>
-        <div class="thumbnail">
-          <img src="http://placehold.it/350x150">
-        </div>
-        <div class="thumbnail">
-          <img src="http://placehold.it/350x150">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="thumbnail">
-          <img src="http://placehold.it/350x150">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </template>
 
 <template name="header">
@@ -66,11 +34,7 @@
         {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        {{#if currentUser}}
-        <li><a href="#">Sign Out</a></li>
-        {{else}}
-        <li><a href="#">Sign In</a></li>
-        {{/if}}
+        {{> loginButtons}}
       </ul>
     </div>
   </div>
