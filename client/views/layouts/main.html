@@ -61,8 +61,16 @@
     </div>
     <div class="collapse navbar-collapse" id="perm-navbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        {{#if currentUser}}
+        <li><a href="#">Shifts</a></li>
+        {{/if}}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{#if currentUser}}
+        <li><a href="#">Sign Out</a></li>
+        {{else}}
+        <li><a href="#">Sign In</a></li>
+        {{/if}}
       </ul>
     </div>
   </div>
