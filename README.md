@@ -6,7 +6,7 @@ The develop branch is where active development should take place.
 
 Please use pull requests for new features.
 
-Available at [PERM](perm.meteor.com).
+Available at [PERM](http://perm.meteor.com).
 
 TODO
 ====
