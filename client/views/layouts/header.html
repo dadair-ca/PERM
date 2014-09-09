@@ -16,13 +16,7 @@
         <li><a href="#">Shifts</a></li>
         {{/if}}
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {{#if currentUser}}
-        <li><a href="#">Sign Out</a></li>
-        {{else}}
-        <li><a href="{{pathFor 'signIn'}}">Sign In</a></li>
-        {{/if}}
-      </ul>
+      {{> signinButtons}}
     </div>
   </div>
 </nav>

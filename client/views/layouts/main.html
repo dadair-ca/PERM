@@ -1,5 +1,6 @@
 <template name="layout">
 {{> header}}
+{{> errors}}
 <div class="container">
   {{> yield}}
 </div>
@@ -10,7 +11,6 @@
   <div class="container">
     <h2>Keep your research organized.</h2>
     <p>Manage your shifts and enrollments.</p>
-    <a href="{{pathFor 'signIn'}}">Sign In</a>
   </div>
 </div>
 </template>
