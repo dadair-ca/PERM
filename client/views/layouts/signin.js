@@ -6,6 +6,10 @@ Template.signIn.events({
     var password = $('#signin_password').val();
 
     //TODO: add trimming and validations
+    if (email == "" || password == "") {
+      throwFlash('danger', 'Please provide both an email and password.');
+      return;
+    }
 
     Meteor.loginWithPassword(email, password, function(err) {
       if (err) {
