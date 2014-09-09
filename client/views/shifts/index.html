@@ -1,22 +1,30 @@
 <template name="shiftsIndex">
-<div class="well">
-  <div class="container">
-    <h2>Your shift schedule.</h2>
-    <p>You are scheduled for {{shiftPattern}}.</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Your upcoming shifts</h3>
+  </div>
+  <div class="panel-body">
+    <ol>
+      {{#each shifts}}
+      {{> shiftItem}}
+      {{/each}}
+    </ol>
   </div>
 </div>
-<div class="panel-heading">
-  <h3 class="panel-title">Upcoming shifts</h3>
-</div>
-<div class="panel-body">
-  <ol>
-    {{#each shifts}}
-    {{> shiftItem}}
-    {{/each}}
-  </ol>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Your past shifts</h3>
+  </div>
+  <div class="panel-body">
+    <ol>
+      {{#each expiredShifts}}
+      {{> shiftItem}}
+      {{/each}}
+    </ol>
+  </div>
 </div>
 </template>
 
 <template name="shiftItem">
-<li>{{when}}, {{duration}} hours</li>
+<li>{{formattedDate}}, {{duration}} hours</li>
 </template>

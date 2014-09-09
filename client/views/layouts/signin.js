@@ -5,22 +5,15 @@ Template.signIn.events({
     var email = $('#signin_email').val();
     var password = $('#signin_password').val();
 
-    if (email == "") {
-      throwError('Username cannot be blank.');
-      return;
-    }
-    if (password == "") {
-      throwError('Password cannot be blank.');
-      return;
-    }
-
-    //TODO: add trimming and more validations
+    //TODO: add trimming and validations
 
     Meteor.loginWithPassword(email, password, function(err) {
       if (err) {
-        throwError(err.reason);
+        throwFlash('danger', err.reason);
       }
     });
+
+    throwFlash('success', 'You have been signed in.');
 
     Router.go('public');
   },
