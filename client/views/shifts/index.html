@@ -1,0 +1,22 @@
+<template name="shiftsIndex">
+<div class="well">
+  <div class="container">
+    <h2>Your shift schedule.</h2>
+    <p>You are scheduled for {{shiftPattern}}.</p>
+  </div>
+</div>
+<div class="panel-heading">
+  <h3 class="panel-title">Upcoming shifts</h3>
+</div>
+<div class="panel-body">
+  <ol>
+    {{#each shifts}}
+    {{> shiftItem}}
+    {{/each}}
+  </ol>
+</div>
+</template>
+
+<template name="shiftItem">
+<li>{{when}}, {{duration}} hours</li>
+</template>

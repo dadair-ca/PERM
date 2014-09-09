@@ -7,3 +7,6 @@ standard-app-packages
 mizzao:bootstrap-3
 iron:router
 accounts-password
+sacha:spin
+mrt:moment
+
