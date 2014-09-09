@@ -26,5 +26,9 @@
 </template>
 
 <template name="shiftItem">
+{{#if thisWeek}}
+<strong><li>{{formattedDate}}, {{duration}} hours</li></strong>
+{{else}}
 <li>{{formattedDate}}, {{duration}} hours</li>
+{{/if}}
 </template>
