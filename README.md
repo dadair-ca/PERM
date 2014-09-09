@@ -18,7 +18,8 @@ Minimum Viable Product
 ----------------------
 - [x] Users should be able to sign in with email and password
 - [x] Users should be able to sign out
-- [ ] Users should be able to see the pattern at which they are scheduled
+- [x] Users should be able to see their upcoming shifts
+- [x] Users should be able to see their past shifts
 - [ ] Users should be able to see the shifts for the current week
 - [ ] Users should be able to drop a shift
 - [ ] Users should be able to pick-up a shift

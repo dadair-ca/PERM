@@ -10,10 +10,10 @@ Template.signIn.events({
     Meteor.loginWithPassword(email, password, function(err) {
       if (err) {
         throwFlash('danger', err.reason);
+      } else {
+        throwFlash('success', 'You have been signed in.');
       }
     });
-
-    throwFlash('success', 'You have been signed in.');
 
     Router.go('public');
   },
