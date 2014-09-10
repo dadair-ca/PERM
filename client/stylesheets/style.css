@@ -2,3 +2,12 @@
 #sign-in-form {
   max-width: 400px;
 }
+
+.left-column {
+  width: 50%;
+  float: left;
+}
+.right-column {
+  width: 45%;
+  float: right;
+}

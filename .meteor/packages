@@ -9,4 +9,5 @@ iron:router
 accounts-password
 sacha:spin
 mrt:moment
+mrt:highcharts
 

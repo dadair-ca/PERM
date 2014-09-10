@@ -1,26 +1,38 @@
 <template name="shiftsIndex">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Your upcoming shifts</h3>
+<div class="left-column">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Your upcoming shifts</h3>
+    </div>
+    <div class="panel-body">
+      <ol>
+        {{#each shifts}}
+        {{> shiftItem}}
+        {{/each}}
+      </ol>
+    </div>
   </div>
-  <div class="panel-body">
-    <ol>
-      {{#each shifts}}
-      {{> shiftItem}}
-      {{/each}}
-    </ol>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Your past shifts</h3>
+    </div>
+    <div class="panel-body">
+      <ol>
+        {{#each expiredShifts}}
+        {{> shiftItem}}
+        {{/each}}
+      </ol>
+    </div>
   </div>
 </div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Your past shifts</h3>
-  </div>
-  <div class="panel-body">
-    <ol>
-      {{#each expiredShifts}}
-      {{> shiftItem}}
-      {{/each}}
-    </ol>
+<div class="right-column">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Your attendance stats</h3>
+    </div>
+    <div class="panel-body">
+      {{> attendanceStats}}
+    </div>
   </div>
 </div>
 </template>
@@ -31,4 +43,8 @@
 {{else}}
 <li>{{formattedDate}}, {{duration}} hours</li>
 {{/if}}
+</template>
+
+<template name="attendanceStats">
+<div id="attendancePie" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 </template>

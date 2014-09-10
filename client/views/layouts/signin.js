@@ -14,11 +14,11 @@ Template.signIn.events({
     Meteor.loginWithPassword(email, password, function(err) {
       if (err) {
         throwFlash('danger', err.reason);
+        Router.go('public');
       } else {
         throwFlash('success', 'You have been signed in.');
+        Router.go('shiftsIndex');
       }
     });
-
-    Router.go('public');
   },
 });
