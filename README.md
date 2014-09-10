@@ -13,6 +13,7 @@ TODO
 - [x] Fix login buttons dropdown
 - [ ] Deploy to Heroku
 - [ ] Add testing framework
+- [ ] Get dynamic attendance data from user object
 
 Minimum Viable Product
 ----------------------
