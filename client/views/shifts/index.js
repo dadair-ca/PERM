@@ -61,13 +61,12 @@ Template.shiftItem.helpers({
   }
 });
 
-Template.attendanceStats.rendered = function() {
+Template.shiftItem.rendered = function() {
   var total = Shifts.find({ownerId: Meteor.user()._id}).count();
-  var attended = 4;
+  var attended = 2;
   var dropped = 2;
   var upcoming = total-attended-dropped;
 
-  console.log(total);
   $('#attendancePie').highcharts({
     credits: false,
     chart: {
