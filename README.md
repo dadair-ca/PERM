@@ -12,15 +12,16 @@ The develop branch is where active development should take place.
 
 Please use pull requests for new features.
 
-Available at [PERM](http://perm.meteor.com).
+Available at [PERM](http://ec2-54-68-95-11.us-west-2.compute.amazonaws.com/).
 
 TODO
 ====
 - [x] Fix login buttons dropdown
-- [ ] Deploy to Heroku
+- [x] Deploy to ~~Heroku~~EC2
 - [ ] Add testing framework
 - [x] Get dynamic attendance data from user object
 - [ ] Attendance chart should be simple values if window is too small
+- [ ] Connect to Mailchimp
 
 Minimum Viable Product
 ----------------------
@@ -33,3 +34,4 @@ Minimum Viable Product
 - [x] Users should be able to pick-up a shift
 - [x] Users should be able to see their attendance stats
 - [ ] Users should be able to email other users when dropping a shift
+- [ ] Administrators should be able to create shifts for a student
