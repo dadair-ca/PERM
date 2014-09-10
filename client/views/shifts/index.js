@@ -2,9 +2,36 @@ Template.shiftsIndex.helpers({
   shifts: function() {
     return Shifts.find({ownerId: Meteor.user()._id, when: {$gt: moment().format(formatString)}}, {sort: {when: 1}});
   },
-expiredShifts: function() {
-  return Shifts.find({ownerId: Meteor.user()._id, when: {$lt: moment().format(formatString)}}, {sort: {when: -1}});
-},
+  expiredShifts: function() {
+    return Shifts.find({ownerId: Meteor.user()._id, when: {$lte: moment().format(formatString)}}, {sort: {when: -1}});
+  },
+  droppedShifts: function() {
+    return Shifts.find({ownerId: null}, {sort: {when: 1}});
+  },
+});
+
+Template.shiftItemOwned.events({
+  'click #drop-button': function(evt) {
+    evt.preventDefault();
+
+    var currentShiftId = this._id;
+
+    var shiftProperties = {
+      ownerId: null
+    };
+
+    Shifts.update(currentShiftId, {$set: shiftProperties}, function (err) {
+      if (err) {
+        throwFlash('danger', 'You cannot drop that shift.');
+      }
+    });
+  }
+});
+
+Template.shiftItemDropped.events({
+  'click #pick-button': function(evt) {
+    console.log(this);
+  }
 });
 
 Template.shiftItem.helpers({

@@ -14,10 +14,7 @@
         </thead>
         <tbody>
         {{#each shifts}}
-        <tr>
-          <td>{{> shiftItem}}</td>
-          <td><button type="button" class="btn btn-danger">Drop</button></td>
-        </tr>
+          {{> shiftItemOwned}}
         {{/each}}
         </tbody>
       </table>
@@ -46,6 +43,27 @@
       {{> attendanceStats}}
     </div>
   </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Dropped shifts <span class="label
+          label-warning">TODO</span></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-hover table-condensed">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each droppedShifts}}
+          {{> shiftItemDropped}}
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -55,6 +73,27 @@
 {{else}}
 {{formattedDate}}, {{duration}} hours
 {{/if}}
+</template>
+
+<template name="shiftItemOwned">
+<tr>
+  <td>
+    {{>shiftItem}}
+  </td>
+  <td>
+    <button type="button" class="btn btn-danger" id="drop-button">Drop</button>
+  </td>
+</tr>
+</template>
+<template name="shiftItemDropped">
+<tr>
+  <td>
+    {{>shiftItem}}
+  </td>
+  <td>
+    <button type="button" class="btn btn-success">Pick up</button>
+  </td>
+</tr>
 </template>
 
 <template name="attendanceStats">

@@ -20,6 +20,7 @@ TODO
 - [ ] Deploy to Heroku
 - [ ] Add testing framework
 - [ ] Get dynamic attendance data from user object
+- [ ] Attendance chart should be simple values if window is too small
 
 Minimum Viable Product
 ----------------------
