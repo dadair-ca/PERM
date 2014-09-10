@@ -19,7 +19,7 @@ TODO
 - [x] Fix login buttons dropdown
 - [ ] Deploy to Heroku
 - [ ] Add testing framework
-- [ ] Get dynamic attendance data from user object
+- [x] Get dynamic attendance data from user object
 - [ ] Attendance chart should be simple values if window is too small
 
 Minimum Viable Product
@@ -29,7 +29,7 @@ Minimum Viable Product
 - [x] Users should be able to see their upcoming shifts
 - [x] Users should be able to see their past shifts
 - [x] Users should be able to see the shifts for the current week
-- [ ] Users should be able to drop a shift
-- [ ] Users should be able to pick-up a shift
-- [ ] Users should be able to see their attendance stats
+- [x] Users should be able to drop a shift
+- [x] Users should be able to pick-up a shift
+- [x] Users should be able to see their attendance stats
 - [ ] Users should be able to email other users when dropping a shift
