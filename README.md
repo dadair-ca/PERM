@@ -12,16 +12,17 @@ The develop branch is where active development should take place.
 
 Please use pull requests for new features.
 
-Available at [PERM](http://ec2-54-68-95-11.us-west-2.compute.amazonaws.com/).
+Available at [PERM](http://54.186.106.12/).
 
 TODO
 ====
 - [x] Fix login buttons dropdown
-- [x] Deploy to ~~Heroku~~EC2
+- [x] Deploy to ~~~Heroku~~~EC2
 - [ ] Add testing framework
 - [x] Get dynamic attendance data from user object
 - [ ] Attendance chart should be simple values if window is too small
-- [ ] Connect to Mailchimp
+- [ ] Connect to ~~~Mailchimp~~~Mailgun
+- [ ] Ensure all datetimes are generated for Mountain Time
 
 Minimum Viable Product
 ----------------------
