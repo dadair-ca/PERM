@@ -111,3 +111,15 @@ Template.shiftItem.rendered = function() {
     }]
   });
 }
+
+Template.shiftRow.helpers({
+  day: function() {
+    return moment(this.when, formatString).format("ddd, MMMM D YYYY");
+  },
+  startTime: function() {
+    return moment(this.when, formatString).format("h:mmA");
+  },
+  endTime: function() {
+    return moment(this.when, formatString).add(this.duration, 'hours').format("h:mmA");
+  },
+});

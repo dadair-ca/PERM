@@ -6,12 +6,7 @@
     </div>
     <div class="panel-body">
       <table class="table table-hover table-condensed">
-        <thead>
-        <tr>
-          <th>Date</th>
-          <th>Actions</th>
-        </tr>
-        </thead>
+        {{> shiftTableHeader}}
         <tbody>
         {{#each shifts}}
           {{> shiftItemOwned}}
@@ -49,12 +44,7 @@
     </div>
     <div class="panel-body">
       <table class="table table-hover table-condensed">
-        <thead>
-        <tr>
-          <th>Date</th>
-          <th>Actions</th>
-        </tr>
-        </thead>
+        {{> shiftTableHeader}}
         <tbody>
         {{#each droppedShifts}}
           {{> shiftItemDropped}}
@@ -76,9 +66,7 @@
 
 <template name="shiftItemOwned">
 <tr>
-  <td>
-    {{>shiftItem}}
-  </td>
+  {{> shiftRow}}
   <td>
     <button type="button" class="btn btn-danger" id="drop-button">Drop</button>
   </td>
@@ -86,9 +74,7 @@
 </template>
 <template name="shiftItemDropped">
 <tr>
-  <td>
-    {{>shiftItem}}
-  </td>
+  {{> shiftRow}}
   <td>
     <button type="button" class="btn btn-success" id="pickup-button">Pick up</button>
   </td>
@@ -97,4 +83,21 @@
 
 <template name="attendanceStats">
 <div id="attendancePie"></div>
+</template>
+
+<template name="shiftRow">
+  <td> {{day}} </td>
+  <td> {{startTime}} </td>
+  <td> {{endTime}} </td>
+</template>
+
+<template name="shiftTableHeader">
+<thead>
+  <tr>
+    <th>Day</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Actions</th>
+  </tr>
+</thead>
 </template>
