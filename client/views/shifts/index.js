@@ -29,8 +29,20 @@ Template.shiftItemOwned.events({
 });
 
 Template.shiftItemDropped.events({
-  'click #pick-button': function(evt) {
-    console.log(this);
+  'click #pickup-button': function(evt) {
+    evt.preventDefault();
+
+    var currentShiftId = this._id;
+
+    var shiftProperties = {
+      ownerId: Meteor.user()._id
+    };
+
+    Shifts.update(currentShiftId, {$set: shiftProperties}, function (err) {
+      if (err) {
+        throwFlash('danger', 'You cannot pickup that shift.');
+      }
+    });
   }
 });
 

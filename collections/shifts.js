@@ -1,5 +1,7 @@
 Shifts = new Meteor.Collection('shifts');
 
 Shifts.allow({
-  update: ownsShift
+  update: function(userId, shift) {
+    return ownsShift(userId, shift) || droppedShift(userId, shift);
+  }
 });
