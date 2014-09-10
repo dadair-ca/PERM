@@ -1,5 +1,11 @@
 Development
 ===========
+```
+$ curl https://install.meteor.com | /bin/sh
+$ git clone https://github.com/adairdavid/PERM.git
+$ cd PERM
+$ meteor
+```
 The master branch should contain stable releases, tagged with the release number (1.0.0, etc).
 
 The develop branch is where active development should take place.
