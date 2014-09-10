@@ -20,8 +20,8 @@ Template.shiftItemOwned.events({
       ownerId: null
     };
 
-    Shifts.update(currentShiftId, {$set: shiftProperties}, function (err) {
-      if (err) {
+    Meteor.call('dropShift', this, function(error) {
+      if (error) {
         throwFlash('danger', 'You cannot drop that shift.');
       }
     });
@@ -38,9 +38,9 @@ Template.shiftItemDropped.events({
       ownerId: Meteor.user()._id
     };
 
-    Shifts.update(currentShiftId, {$set: shiftProperties}, function (err) {
-      if (err) {
-        throwFlash('danger', 'You cannot pickup that shift.');
+    Meteor.call('pickupShift', this, function(error) {
+      if (error) {
+        throwFlash('danger', 'You cannot drop that shift.');
       }
     });
   }
@@ -64,8 +64,10 @@ Template.shiftItem.helpers({
 Template.shiftItem.rendered = function() {
   var total = Shifts.find({ownerId: Meteor.user()._id}).count();
   var attended = 2;
-  var dropped = 2;
-  var upcoming = total-attended-dropped;
+  var dropped = Drops.find({ownerId: Meteor.user()._id}).count();
+  var pickedup = PickUps.find({ownerId: Meteor.user()._id}).count();
+
+  var upcoming = Shifts.find({ownerId: Meteor.user()._id, when: {$gt: moment().format(formatString)}}).count();
 
   $('#attendancePie').highcharts({
     credits: false,
@@ -76,7 +78,7 @@ Template.shiftItem.rendered = function() {
     },
     title: null,
     tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      pointFormat: '{series.name}: <b>{point.y:.0f}</b>'
     },
     plotOptions: {
       pie: {
@@ -84,7 +86,7 @@ Template.shiftItem.rendered = function() {
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          format: '<b>{point.name}</b>: {point.y:.0f}',
           style: {
             color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
           }
@@ -95,11 +97,12 @@ Template.shiftItem.rendered = function() {
       type: 'pie',
       name: 'Attendance',
       data: [
-        { name: 'Attended', y: 100*attended/total, color: '#C7F464' },
-        { name: 'Upcoming', y: 100*upcoming/total, color: '#556270' },
+        { name: 'Attended', y: attended, color: '#C7F464' },
+        { name: 'Upcoming', y: upcoming, color: '#556270' },
+        { name: 'Picked Up', y: pickedup, color: '#4ECDC4' },
         {
           name: 'Dropped',
-          y: 100*dropped/total,
+          y: dropped,
           sliced: true,
           selected: true,
           color: '#FF6B6B'
