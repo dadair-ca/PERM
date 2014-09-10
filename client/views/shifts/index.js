@@ -1,12 +1,15 @@
 Template.shiftsIndex.helpers({
+  //upcoming shifts
   shifts: function() {
-    return Shifts.find({ownerId: Meteor.user()._id, when: {$gt: moment().format(formatString)}}, {sort: {when: 1}});
+    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
+    return Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$gt: now}}, {sort: {'when.day': 1}});
   },
   expiredShifts: function() {
-    return Shifts.find({ownerId: Meteor.user()._id, when: {$lte: moment().format(formatString)}}, {sort: {when: -1}});
+    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
+    return Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$lte: now}}, {sort: {'when.day': -1}});
   },
   droppedShifts: function() {
-    return Shifts.find({ownerId: null}, {sort: {when: 1}});
+    return Shifts.find({ownerId: null}, {sort: {'when.day': 1}});
   },
 });
 
@@ -46,28 +49,15 @@ Template.shiftItemDropped.events({
   }
 });
 
-Template.shiftItem.helpers({
-  formattedDate: function() {
-    return moment(this.when, formatString).format("dddd, MMMM Do YYYY, h:mm:ss a");
-  },
-  thisWeek: function() {
-    var date = moment(this.when, formatString);
-    var now = moment();
-    var difference = date.diff(now, 'days');
-    if (difference < 7 && difference > 0) {
-      return true;
-    }
-    return false;
-  }
-});
+Template.shiftRow.rendered = function() {
+  var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
 
-Template.shiftItem.rendered = function() {
   var total = Shifts.find({ownerId: Meteor.user()._id}).count();
-  var attended = 2;
+  var upcoming = Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$gt: now}}).count();
+
+  var attended = Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$lte: now}}, {sort: {'when.day': -1}}).count();
   var dropped = Drops.find({ownerId: Meteor.user()._id}).count();
   var pickedup = PickUps.find({ownerId: Meteor.user()._id}).count();
-
-  var upcoming = Shifts.find({ownerId: Meteor.user()._id, when: {$gt: moment().format(formatString)}}).count();
 
   $('#attendancePie').highcharts({
     credits: false,
@@ -114,12 +104,12 @@ Template.shiftItem.rendered = function() {
 
 Template.shiftRow.helpers({
   day: function() {
-    return moment(this.when, formatString).format("ddd, MMMM D YYYY");
+    return moment(this.when.day, "YYYY-MM-DD").format("ddd, MMMM DD, YYYY");
   },
   startTime: function() {
-    return moment(this.when, formatString).format("h:mmA");
+    return this.when.start;
   },
   endTime: function() {
-    return moment(this.when, formatString).add(this.duration, 'hours').format("h:mmA");
+    return moment(this.when.start, "h:mmA").add(this.duration, 'hours').format("h:mmA");
   },
 });

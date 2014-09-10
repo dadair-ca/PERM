@@ -1,11 +1,13 @@
 Shift
 =====
 - ownerId: id
-- when: datetime
+- when: {
+    day: string
+    start: string
+  }
 - duration: int
 
 User
 ====
 - email: string
 - password: string
-- schedule: [ {day: string, start: time, end: time} ]
