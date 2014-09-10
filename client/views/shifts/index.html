@@ -1,15 +1,26 @@
 <template name="shiftsIndex">
-<div class="left-column">
+<div class="right-column">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Your upcoming shifts</h3>
     </div>
     <div class="panel-body">
-      <ol>
+      <table class="table table-hover table-condensed">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
         {{#each shifts}}
-        {{> shiftItem}}
+        <tr>
+          <td>{{> shiftItem}}</td>
+          <td><button type="button" class="btn btn-danger">Drop</button></td>
+        </tr>
         {{/each}}
-      </ol>
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="panel panel-default">
@@ -17,15 +28,15 @@
       <h3 class="panel-title">Your past shifts</h3>
     </div>
     <div class="panel-body">
-      <ol>
+      <ul>
         {{#each expiredShifts}}
-        {{> shiftItem}}
+        <li>{{> shiftItem}}</li>
         {{/each}}
-      </ol>
+      </ul>
     </div>
   </div>
 </div>
-<div class="right-column">
+<div class="left-column">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Your attendance stats <span class="label
@@ -40,9 +51,9 @@
 
 <template name="shiftItem">
 {{#if thisWeek}}
-<strong><li>{{formattedDate}}, {{duration}} hours</li></strong>
+<strong>{{formattedDate}}, {{duration}} hours</strong>
 {{else}}
-<li>{{formattedDate}}, {{duration}} hours</li>
+{{formattedDate}}, {{duration}} hours
 {{/if}}
 </template>
 

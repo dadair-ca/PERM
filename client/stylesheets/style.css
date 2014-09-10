@@ -4,10 +4,17 @@
 }
 
 .left-column {
-  width: 50%;
+  width: 40%;
   float: left;
 }
+
 .right-column {
-  width: 45%;
+  width: 58%;
   float: right;
+}
+
+#attendancePie {
+  height: 100%;
+  width: 100%;
+  margin: auto auto;
 }

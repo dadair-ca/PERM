@@ -27,7 +27,7 @@ Minimum Viable Product
 - [x] Users should be able to sign out
 - [x] Users should be able to see their upcoming shifts
 - [x] Users should be able to see their past shifts
-- [ ] Users should be able to see the shifts for the current week
+- [x] Users should be able to see the shifts for the current week
 - [ ] Users should be able to drop a shift
 - [ ] Users should be able to pick-up a shift
 - [ ] Users should be able to see their attendance stats
