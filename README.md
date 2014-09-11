@@ -17,7 +17,7 @@ TODO
 - [ ] Add testing framework
 - [x] Get dynamic attendance data from user object
 - [ ] Attendance chart should be simple values if window is too small
-- [ ] Connect to ~~Mailchimp~~ Mailgun
+- [x] Connect to ~~Mailchimp~~ Mailgun
 - [x] Ensure all datetimes are generated for Mountain Time
 - [ ] Should use Bootstrap grid system on /shifts so it collapses on mobile
 
@@ -31,5 +31,5 @@ Minimum Viable Product
 - [x] Users should be able to drop a shift
 - [x] Users should be able to pick-up a shift
 - [x] Users should be able to see their attendance stats
-- [ ] Users should be able to email other users when dropping a shift
+- [x] Users should be able to email other users when dropping a shift
 - [ ] Administrators should be able to create shifts for a student
