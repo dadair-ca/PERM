@@ -11,6 +11,9 @@ Template.shiftsIndex.helpers({
   droppedShifts: function() {
     return Shifts.find({ownerId: null}, {sort: {'when.day': 1}});
   },
+  noneAvailable: function() {
+    return Shifts.find({ownerId: null}).count() == 0;
+  }
 });
 
 Template.shiftItemOwned.helpers({

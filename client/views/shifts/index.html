@@ -1,6 +1,6 @@
 <template name="shiftsIndex">
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-4 hidden-xs">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Your attendance stats</h3>
@@ -31,6 +31,9 @@
         <h3 class="panel-title">Available shifts</h3>
       </div>
       <div class="panel-body">
+        {{#if noneAvailable}}
+        <p>There are no shifts available at this time.</p>
+        {{else}}
         <table class="table table-hover table-condensed">
           {{> shiftTableHeader}}
           <tbody>
@@ -39,6 +42,7 @@
           {{/each}}
           </tbody>
         </table>
+        {{/if}}
       </div>
     </div>
     <div class="panel panel-default">

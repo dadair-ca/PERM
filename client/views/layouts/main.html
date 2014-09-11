@@ -8,13 +8,11 @@
 
 <template name="public">
 <div class="jumbotron">
-  <div class="container">
-    <h2>Paediatric Emergency Research Management</h2>
-    <p>Keep up-to-date on shifts and enrollments.</p>
-    {{#if currentUser}}
-    {{else}}
-    <a href="{{pathFor 'signIn'}}" type="button" class="btn btn-primary btn-lg">Sign in</a>
-    {{/if}}
-  </div>
+  <h2>Paediatric Emergency Research Management</h2>
+  <p>Keep up-to-date on shifts and enrollments.</p>
+  {{#if currentUser}}
+  {{else}}
+  <a role="button" href="{{pathFor 'signIn'}}" type="button" class="btn btn-primary btn-lg">Sign in</a>
+  {{/if}}
 </div>
 </template>

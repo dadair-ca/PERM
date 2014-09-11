@@ -1,24 +1,22 @@
 <template name="header">
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
-    <div class="row">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#perm-navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{{pathFor 'public'}}">PERM</a>
-      </div>
-      <div class="collapse navbar-collapse" id="perm-navbar">
-        <ul class="nav navbar-nav">
-          {{#if currentUser}}
-          <li><a href="{{pathFor 'shiftsIndex'}}">Shifts</a></li>
-          {{/if}}
-        </ul>
-        {{> signinButtons}}
-      </div>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#perm-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{pathFor 'public'}}">PERM</a>
+    </div>
+    <div class="navbar-collapse collapse" id="perm-navbar">
+      <ul class="nav navbar-nav">
+        {{#if currentUser}}
+        <li><a href="{{pathFor 'shiftsIndex'}}">Shifts</a></li>
+        {{/if}}
+      </ul>
+      {{> signinButtons}}
     </div>
   </div>
 </nav>
