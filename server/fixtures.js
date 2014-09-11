@@ -1,6 +1,6 @@
 if (Meteor.users.find().count() === 0) {
   Accounts.createUser({email: 'dadair@ucalgary.ca', password: 'ed1ach'});
-  Accounts.createUser({email: 'test@test.com', password: 'test'});
+  Accounts.createUser({email: 'adair.david@gmail.com', password: 'ed1ach'});
 
   var now = moment().tz('America/Edmonton');
 

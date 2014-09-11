@@ -13,11 +13,37 @@ Template.shiftsIndex.helpers({
   },
 });
 
+Template.shiftItemOwned.helpers({
+  endTime: function() {
+    return moment(this.when.start, 'h:mmA').add(this.duration, 'hours').format('h:mmA');
+  },
+  formattedDate: function() {
+    return moment(this.when.day, 'YYYY-MM-DD').format('dddd, MMMM Do YYYY');
+  }
+});
+
 Template.shiftItemOwned.events({
   'click .drop-button': function(evt) {
     evt.preventDefault();
 
     var currentShiftId = $(evt.target).data('id');
+
+    var email = {
+      subject: $('#'+ currentShiftId + '-email_subject').val(),
+      message: $('#'+ currentShiftId + '-email_message').val()
+    }
+
+    // Add default message
+    if (email.subject == "") {
+      throwFlash('danger', 'Your subject cannot be empty!');
+    }
+    if (email.message == "") {
+      throwFlash('danger', 'Your message cannot be empty!');
+    }
+
+    if (email.subject == "" || email.message == "") {
+      return;
+    }
 
     var shiftProperties = {
       ownerId: null
@@ -26,6 +52,14 @@ Template.shiftItemOwned.events({
     Meteor.call('dropShift', this, function(error) {
       if (error) {
         throwFlash('danger', 'You cannot drop that shift.');
+      } else {
+        Meteor.call('sendEmail', email, function(error) {
+          if (error) {
+            throwFlash('danger', 'We were unable to send your email(s) at this time.');
+          } else {
+            throwFlash('success', 'The shift has been dropped. Please pick up another.');
+          }
+        });
       }
     });
 

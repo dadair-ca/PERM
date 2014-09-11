@@ -40,8 +40,7 @@
 <div class="left-column">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Your attendance stats <span class="label
-          label-warning">WIP</span></h3>
+      <h3 class="panel-title">Your attendance stats</h3>
     </div>
     <div class="panel-body">
       {{> attendanceStats}}
@@ -89,11 +88,13 @@
           <div class="modal-body">
             <form class="email-form">
               <div class="container-fluid">
-                <label for="email_subject">Subject</label>
-                <input type="text" class="form-control" id="{{_id}}-email_subject" placeholder="Subject"/>
+                <label for="{{_id}}-email_subject">Subject</label>
+                <input type="text" class="form-control"
+                id="{{_id}}-email_subject" value="PEMRAP Shift Available!"/>
                 <br />
-                <label for="email_message">Message</label>
-                <textarea rows="5" class="form-control" id="{{_id}}-email_message"></textarea>
+                <label for="{{_id}}-email_message">Message</label>
+                <textarea rows="5" class="form-control"
+                  id="{{_id}}-email_message">I have dropped a PEMRAP shift on {{formattedDate}} from {{when.start}} to {{endTime}}.</textarea>
                 <br />
               </div>
             </form>
