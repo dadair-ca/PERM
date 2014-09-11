@@ -13,11 +13,11 @@ Available at [PERM](http://54.186.106.12/).
 TODO
 ====
 - [x] Fix login buttons dropdown
-- [x] Deploy to ~~~Heroku~~~EC2
+- [x] Deploy to ~~Heroku~~ EC2
 - [ ] Add testing framework
 - [x] Get dynamic attendance data from user object
 - [ ] Attendance chart should be simple values if window is too small
-- [ ] Connect to ~~~Mailchimp~~~Mailgun
+- [ ] Connect to ~~Mailchimp~~ Mailgun
 - [x] Ensure all datetimes are generated for Mountain Time
 - [ ] Should use Bootstrap grid system on /shifts so it collapses on mobile
 
