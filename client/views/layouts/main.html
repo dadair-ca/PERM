@@ -9,8 +9,12 @@
 <template name="public">
 <div class="jumbotron">
   <div class="container">
-    <h2>Keep your research organized.</h2>
-    <p>Manage your shifts and enrollments.</p>
+    <h2>Paediatric Emergency Research Management</h2>
+    <p>Keep up-to-date on shifts and enrollments.</p>
+    {{#if currentUser}}
+    {{else}}
+    <a href="{{pathFor 'signIn'}}" type="button" class="btn btn-primary btn-lg">Sign in</a>
+    {{/if}}
   </div>
 </div>
 </template>
