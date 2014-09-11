@@ -5,3 +5,9 @@ Template.signinButtons.events({
     Router.go('public');
   }
 });
+
+Template.signinButtons.helpers({
+  email: function() {
+    return Meteor.user().emails[0].address;
+  }
+});
