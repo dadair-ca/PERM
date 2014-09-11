@@ -33,3 +33,4 @@ Minimum Viable Product
 - [x] Users should be able to see their attendance stats
 - [x] Users should be able to email other users when dropping a shift
 - [ ] Administrators should be able to create shifts for a student
+- [ ] Administrators should be able to create new users

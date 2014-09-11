@@ -7,12 +7,12 @@ if (Meteor.users.find().count() === 0) {
   var users = Meteor.users.find();
 
   users.forEach(function(user) {
-    for (i = 0; i < 12; ++i) {
+    for (i = 0; i < Math.floor(Math.random()*(12-5+1)+5); ++i) {
       Shifts.insert({
         ownerId: user._id,
         when: {
           day: moment(now).add(i, 'weeks').format("YYYY-MM-DD"),
-          start: moment(now).format("h:mmA")
+          start: moment(now).add(i, 'hours').format("h:mmA")
         },
         duration: "4"
       });
