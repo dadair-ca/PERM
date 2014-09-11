@@ -9,7 +9,7 @@
         {{> shiftTableHeader}}
         <tbody>
         {{#each shifts}}
-          {{> shiftItemOwned}}
+        {{> shiftItemOwned}}
         {{/each}}
         </tbody>
       </table>
@@ -30,7 +30,7 @@
         </thead>
         <tbody>
         {{#each expiredShifts}}
-          {{> shiftItem}}
+        {{> shiftItem}}
         {{/each}}
         </tbody>
       </table>
@@ -56,7 +56,7 @@
         {{> shiftTableHeader}}
         <tbody>
         {{#each droppedShifts}}
-          {{> shiftItemDropped}}
+        {{> shiftItemDropped}}
         {{/each}}
         </tbody>
       </table>
@@ -75,15 +75,46 @@
 <tr>
   {{> shiftRow}}
   <td>
-    <button type="button" class="btn btn-danger" id="drop-button">Drop</button>
+    <button class="btn btn-danger btn-sm" data-toggle="modal"
+      data-target="#{{_id}}-dropModal">Drop</button>
+
+    <div class="modal fade" id="{{_id}}-dropModal" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="{{_id}}-myModalLabel">Broadcast shift drop</h4>
+          </div>
+          <div class="modal-body">
+            <form class="email-form">
+              <div class="container-fluid">
+                <label for="email_subject">Subject</label>
+                <input type="text" class="form-control" id="{{_id}}-email_subject" placeholder="Subject"/>
+                <br />
+                <label for="email_message">Message</label>
+                <textarea rows="5" class="form-control" id="{{_id}}-email_message"></textarea>
+                <br />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="drop-button btn btn-danger" data-dismiss="modal"
+              data-id="{{_id}}">Drop</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </td>
 </tr>
 </template>
+
 <template name="shiftItemDropped">
 <tr>
   {{> shiftRow}}
   <td>
-    <button type="button" class="btn btn-success" id="pickup-button">Pick up</button>
+    <button type="button" class="btn btn-success btn-sm" id="pickup-button">Pick up</button>
   </td>
 </tr>
 </template>
@@ -93,9 +124,9 @@
 </template>
 
 <template name="shiftRow">
-  <td> {{day}} </td>
-  <td> {{startTime}} </td>
-  <td> {{endTime}} </td>
+<td> {{day}} </td>
+<td> {{startTime}} </td>
+<td> {{endTime}} </td>
 </template>
 
 <template name="shiftTableHeader">

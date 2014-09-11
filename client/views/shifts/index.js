@@ -14,10 +14,10 @@ Template.shiftsIndex.helpers({
 });
 
 Template.shiftItemOwned.events({
-  'click #drop-button': function(evt) {
+  'click .drop-button': function(evt) {
     evt.preventDefault();
 
-    var currentShiftId = this._id;
+    var currentShiftId = $(evt.target).data('id');
 
     var shiftProperties = {
       ownerId: null
@@ -28,7 +28,12 @@ Template.shiftItemOwned.events({
         throwFlash('danger', 'You cannot drop that shift.');
       }
     });
-  }
+
+    // Manually remove bootstrap modal background after drop,
+    // since the DOM is messed up after a reactive refresh and bootstrap
+    // can't find the necessary elements to remove by itself
+    $('.modal-backdrop').remove();
+  },
 });
 
 Template.shiftItemDropped.events({
