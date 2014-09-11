@@ -17,3 +17,8 @@
   width: 100%;
   margin: auto auto;
 }
+
+#perm-navbar-brand {
+  color: #FF6B6B;
+  font-weight: bold;
+}

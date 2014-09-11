@@ -60,7 +60,7 @@ Template.shiftItemOwned.events({
           if (error) {
             throwFlash('danger', 'We were unable to send your email(s) at this time.');
           } else {
-            throwFlash('success', 'The shift has been dropped. Please pick up another.');
+            throwFlash('success', 'The shift has been dropped. Make sure to pick up a shift to remain shift-neutral.');
           }
         });
       }

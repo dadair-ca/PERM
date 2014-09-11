@@ -19,7 +19,7 @@ TODO
 - [ ] Attendance chart should be simple values if window is too small
 - [x] Connect to ~~Mailchimp~~ Mailgun
 - [x] Ensure all datetimes are generated for Mountain Time
-- [ ] Should use Bootstrap grid system on /shifts so it collapses on mobile
+- [x] Should use Bootstrap grid system on /shifts so it collapses on mobile
 
 Minimum Viable Product
 ----------------------
