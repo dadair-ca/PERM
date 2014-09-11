@@ -9,6 +9,7 @@ Template.flash.rendered = function() {
   Meteor.defer(function() {
     Flashes.update(flash._id, {$set: {seen: true}});
   });
+  $('.alert').delay(2000).fadeOut(2000);
 };
 
 Template.flash.helpers({
