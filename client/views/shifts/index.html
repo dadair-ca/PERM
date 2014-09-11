@@ -1,64 +1,66 @@
 <template name="shiftsIndex">
-<div class="right-column">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Your upcoming shifts</h3>
-    </div>
-    <div class="panel-body">
-      <table class="table table-hover table-condensed">
-        {{> shiftTableHeader}}
-        <tbody>
-        {{#each shifts}}
-        {{> shiftItemOwned}}
-        {{/each}}
-        </tbody>
-      </table>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Your attendance stats</h3>
+      </div>
+      <div class="panel-body">
+        {{> attendanceStats}}
+      </div>
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Your past shifts</h3>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Your upcoming shifts</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          {{> shiftTableHeader}}
+          <tbody>
+          {{#each shifts}}
+          {{> shiftItemOwned}}
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="panel-body">
-      <table class="table table-hover table-condensed">
-        <thead>
-          <tr>
-            <th>Day</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-          </tr>
-        </thead>
-        <tbody>
-        {{#each expiredShifts}}
-        {{> shiftItem}}
-        {{/each}}
-        </tbody>
-      </table>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Available shifts</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          {{> shiftTableHeader}}
+          <tbody>
+          {{#each droppedShifts}}
+          {{> shiftItemDropped}}
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-</div>
-<div class="left-column">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Your attendance stats</h3>
-    </div>
-    <div class="panel-body">
-      {{> attendanceStats}}
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Dropped shifts</h3>
-    </div>
-    <div class="panel-body">
-      <table class="table table-hover table-condensed">
-        {{> shiftTableHeader}}
-        <tbody>
-        {{#each droppedShifts}}
-        {{> shiftItemDropped}}
-        {{/each}}
-        </tbody>
-      </table>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Your past shifts</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#each expiredShifts}}
+          {{> shiftItem}}
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
