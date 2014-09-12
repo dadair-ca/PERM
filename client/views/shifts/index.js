@@ -117,12 +117,13 @@ Template.shiftRow.rendered = function() {
         allowPointSelect: true,
         cursor: 'pointer',
         dataLabels: {
-          enabled: true,
+          enabled: false,
           format: '<b>{point.name}</b>: {point.y:.0f}',
           style: {
             color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
           }
-        }
+        },
+        showInLegend: true
       }
     },
     series: [{
