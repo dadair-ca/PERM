@@ -2,12 +2,13 @@ if (Meteor.users.find().count() === 0) {
   var password = Meteor.uuid().split('-')[0];
 
   var userId = Accounts.createUser({email: 'admin@perm.com', password: password});
-
   Meteor.users.update({_id: userId}, {$set: {admin: true}});
-
   var adminUser = Meteor.users.findOne({_id: userId});
   console.log(adminUser.emails[0].address);
   console.log(password);
+
+  var userId = Accounts.createUser({email: 'testuser@perm.com', password: 'test'});
+  Meteor.users.update({_id: userId}, {$set: {admin: false}});
   //Accounts.createUser({email: 'adair.david@gmail.com', password: 'ed1ach'});
   //Accounts.createUser({email: 'testuser@perm.com', password: 'test'});
 

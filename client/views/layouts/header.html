@@ -17,7 +17,7 @@
             glyphicon-calendar"> </span>Shifts</a></li>
         {{/if}}
         {{#if administrator}}
-        <li><a href="#"><span class="glyphicon glyphicon-user"> </span>Users</a></li>
+        <li><a href="{{pathFor 'usersIndex'}}"><span class="glyphicon glyphicon-user"> </span>Users</a></li>
         {{/if}}
       </ul>
       {{> signinButtons}}
