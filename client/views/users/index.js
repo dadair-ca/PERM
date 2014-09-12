@@ -3,7 +3,10 @@ Template.userItem.helpers({
     return this.emails[0].address;
   },
   isAdmin: function() {
-    return this.admin === true;
+    if(Roles.userIsInRole(this._id, 'admin')) {
+      return true;
+    }
+    return false;
   }
 });
 

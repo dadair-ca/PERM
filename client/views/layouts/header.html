@@ -16,7 +16,7 @@
         <li><a href="{{pathFor 'shiftsIndex'}}"><span class="glyphicon
             glyphicon-calendar"> </span>Shifts</a></li>
         {{/if}}
-        {{#if administrator}}
+        {{#if isInRole 'admin'}}
         <li><a href="{{pathFor 'usersIndex'}}"><span class="glyphicon glyphicon-user"> </span>Users</a></li>
         {{/if}}
       </ul>
