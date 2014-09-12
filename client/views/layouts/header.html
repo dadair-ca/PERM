@@ -13,7 +13,11 @@
     <div class="navbar-collapse collapse" id="perm-navbar">
       <ul class="nav navbar-nav">
         {{#if currentUser}}
-        <li><a href="{{pathFor 'shiftsIndex'}}">Shifts</a></li>
+        <li><a href="{{pathFor 'shiftsIndex'}}"><span class="glyphicon
+            glyphicon-calendar"> </span>Shifts</a></li>
+        {{/if}}
+        {{#if administrator}}
+        <li><a href="#"><span class="glyphicon glyphicon-user"> </span>Users</a></li>
         {{/if}}
       </ul>
       {{> signinButtons}}

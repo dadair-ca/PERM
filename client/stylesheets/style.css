@@ -22,3 +22,7 @@
   color: #FF6B6B;
   font-weight: bold;
 }
+
+li .glyphicon {
+  padding-right: 4px;
+}
