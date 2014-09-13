@@ -16,7 +16,7 @@ TODO
 - [x] Deploy to ~~Heroku~~ EC2
 - [ ] Add testing framework
 - [x] Get dynamic attendance data from user object
-- [ ] Attendance chart should be simple values if window is too small
+- [x] Attendance chart should be ~~simple values~~ removed if window is too small
 - [x] Connect to ~~Mailchimp~~ Mailgun
 - [x] Ensure all datetimes are generated for Mountain Time
 - [x] Should use Bootstrap grid system on /shifts so it collapses on mobile
@@ -32,5 +32,5 @@ Minimum Viable Product
 - [x] Users should be able to pick-up a shift
 - [x] Users should be able to see their attendance stats
 - [x] Users should be able to email other users when dropping a shift
-- [ ] Administrators should be able to create new users
+- [x] Administrators should be able to create new users
 - [ ] Administrators should be able to create shifts for a student
