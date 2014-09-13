@@ -77,15 +77,13 @@ Template.shiftItemDropped.events({
   'click #pickup-button': function(evt) {
     evt.preventDefault();
 
-    var currentShiftId = this._id;
-
     var shiftProperties = {
       ownerId: Meteor.user()._id
     };
 
     Meteor.call('pickupShift', this, function(error) {
       if (error) {
-        throwFlash('danger', 'You cannot drop that shift.');
+        throwFlash('danger', 'You cannot pick up that shift.');
       }
     });
   }
