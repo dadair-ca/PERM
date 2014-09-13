@@ -56,5 +56,10 @@ Template.userItem.events({
         throwFlash('success', 'Deleted user: ' + email);
       }
     });
+
+    // Manually remove bootstrap modal background after drop,
+    // since the DOM is messed up after a reactive refresh and bootstrap
+    // can't find the necessary elements to remove by itself
+    $('.modal-backdrop').remove();
   },
 });
