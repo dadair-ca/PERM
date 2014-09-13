@@ -7,7 +7,7 @@ Template.signinButtons.events({
 });
 
 Template.signinButtons.helpers({
-  email: function() {
-    return Meteor.user().emails[0].address;
+  name: function() {
+    return Meteor.user().profile.name;
   }
 });

@@ -2,12 +2,9 @@ Template.userItem.helpers({
   email: function() {
     return this.emails[0].address;
   },
-  isAdmin: function() {
-    if(Roles.userIsInRole(this._id, 'admin')) {
-      return true;
-    }
-    return false;
-  }
+  role: function() {
+    return this.roles[0];
+  },
 });
 
 Template.usersIndex.helpers({
@@ -22,11 +19,17 @@ Template.usersIndex.events({
 
     var user = {
       email: $('#user-email').val(),
-      roles: [$('#user-role').val()]
+      roles: [$('#user-role').val()],
+      name: $('#user-name').val()
     };
 
     if (user.email == "") {
       throwFlash('danger', 'Please enter an email address for the user.');
+    }
+    if (user.name == "") {
+      throwFlash('danger', 'Please enter a name for the user.');
+    }
+    if (user.name == "" || user.email == "") {
       return;
     }
 

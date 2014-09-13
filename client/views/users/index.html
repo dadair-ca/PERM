@@ -12,12 +12,15 @@
             <form class="user-form">
               <div class="container-fluid">
                 <label for="user-email">Email</label>
-                <input type="text" class="form-control" id="user-email" placeholder="example@email.com"/>
+                <input type="email" class="form-control" id="user-email" placeholder="example@email.com"/>
+                <br />
+                <label for="user-name">Name</label>
+                <input type="text" class="form-control" id="user-name" placeholder="John Doe"/>
                 <br />
                 <label for="user-role">Role</label>
                 <select class="form-control" id="user-role">
-                  <option value="admin">Admin</option>
                   <option value="student">Student</option>
+                  <option value="admin">Admin</option>
                 </select>
                 <br />
               </div>
@@ -42,7 +45,8 @@
         <table class="table table-hover table-condensed">
           <thead>
             <tr>
-              <th>Email</th>
+              <th>Name</th>
+              <th>Role</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -60,7 +64,8 @@
 
 <template name="userItem">
 <tr>
-  <td>{{email}} {{#if isAdmin}}(Admin){{/if}}</td>
+  <td>{{profile.name}}</td>
+  <td>{{role}}</td>
   <td><button class="btn btn-sm btn-danger deleteUserButton">Delete</button></td>
 </tr>
 </template>

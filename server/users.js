@@ -19,6 +19,8 @@ Meteor.methods({
     if (user.roles.length > 0) {
       Roles.addUsersToRoles(id, user.roles);
     }
+
+    Accounts.sendEnrollmentEmail(id);
   },
   deleteUser: function(user) {
     var loggedInUser = Meteor.user();
@@ -37,3 +39,16 @@ Meteor.methods({
   },
 });
 
+(function () {
+  "use strict";
+
+  Accounts.urls.resetPassword = function(token) {
+    return Meteor.absoluteUrl('reset-password/' + token);
+  };
+  Accounts.urls.verifyEmail = function(token) {
+    return Meteor.absoluteUrl('verify-email/' + token);
+  };
+  Accounts.urls.enrollAccount = function(token) {
+    return Meteor.absoluteUrl('enroll-account/' + token);
+  };
+})();
