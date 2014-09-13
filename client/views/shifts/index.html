@@ -16,6 +16,9 @@
         <h3 class="panel-title">Your upcoming shifts</h3>
       </div>
       <div class="panel-body">
+        {{#if noneUpcoming}}
+        <p>You have no upcoming shifts.</p>
+        {{else}}
         <table class="table table-hover table-condensed">
           {{> shiftTableHeader}}
           <tbody>
@@ -24,6 +27,7 @@
           {{/each}}
           </tbody>
         </table>
+        {{/if}}
       </div>
     </div>
     <div class="panel panel-default">
@@ -50,6 +54,9 @@
         <h3 class="panel-title">Your past shifts</h3>
       </div>
       <div class="panel-body">
+        {{#if noneAttended}}
+        <p>You have not yet attended any shifts.</p>
+        {{else}}
         <table class="table table-hover table-condensed">
           <thead>
             <tr>
@@ -64,6 +71,7 @@
           {{/each}}
           </tbody>
         </table>
+        {{/if}}
       </div>
     </div>
   </div>
