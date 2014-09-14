@@ -7,6 +7,13 @@ Template.usersShow.helpers({
   },
 });
 
+Template.newShiftsModal.helpers({
+  startDate: function() { return Session.get("startDate"); },
+  endDate: function() { return Session.get("endDate"); },
+  startTime: function() { return Session.get("startTime"); },
+  endTime: function() { return Session.get("endTime"); },
+});
+
 Template.usersShow.events({
   'click .newShiftsButton': function(evt) {
     evt.preventDefault();
@@ -37,6 +44,11 @@ Template.usersShow.events({
       throwFlash('danger', 'Please fill in all form fields.');
       return;
     }
+
+    Session.set("startDate", startDate);
+    Session.set("endDate", endDate);
+    Session.set("startTime", startTime);
+    Session.set("endTime", endTime);
 
     var hoursBetween = moment(endTime, 'hh:mm').diff(moment(startTime, 'hh:mm'), 'hours', true);
     if (hoursBetween <= 0) {

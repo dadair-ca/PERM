@@ -1,7 +1,6 @@
 if (Meteor.users.find().count() === 0) {
   var users = [
     {name: "David Adair", email: "dadair@ucalgary.ca", roles:['admin']},
-    {name: "John Doe", email: "testuser@perm.com", roles:['student']},
     ];
 
   _.each(users, function(user) {

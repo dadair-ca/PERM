@@ -39,3 +39,7 @@ li .glyphicon {
   position: relative;
   left: -50%;
 }
+
+#calendar .studentEvent {
+  background: red;
+}

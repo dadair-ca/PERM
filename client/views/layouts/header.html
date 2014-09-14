@@ -14,7 +14,9 @@
       <ul class="nav navbar-nav">
         {{#if currentUser}}
         <li><a href="{{pathFor 'shiftsIndex'}}"><span class="glyphicon
-            glyphicon-calendar"> </span>Shifts</a></li>
+            glyphicon-time"> </span>Shifts</a></li>
+        <li><a href="{{pathFor 'calendar'}}"><span class="glyphicon
+            glyphicon-calendar"> </span>Calendar</a></li>
         {{/if}}
         {{#if isInRole 'admin'}}
         <li><a href="{{pathFor 'usersIndex'}}"><span class="glyphicon glyphicon-user"> </span>Users</a></li>
