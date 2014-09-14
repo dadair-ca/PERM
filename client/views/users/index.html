@@ -33,7 +33,7 @@
 
 <template name="userItem">
 <tr>
-  <td>{{profile.name}}</td>
+  <td><a href="{{pathFor 'usersShow'}}">{{profile.name}}</a></td>
   <td>{{role}}</td>
   <td><button class="btn btn-sm btn-danger" data-toggle="modal"
       data-target="#{{_id}}-confirmDeleteModal">Delete</button></td>

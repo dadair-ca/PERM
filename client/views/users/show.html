@@ -1,0 +1,113 @@
+<template name="usersShow">
+<div class="row">
+  {{> newShiftsModal}}
+  <div class="col-md-4 hidden-xs">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Profile</h3>
+      </div>
+      <div class="panel-body">
+        <div class="avatar">
+          <img src="http://placehold.it/230" alt="Avatar">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <ul class="list-inline">
+          <li class="pull-right">
+          <button class="btn btn-sm btn-success" data-toggle="modal"
+            data-target="#newShiftsModal">Add shifts</button>
+          </li>
+          <li>
+          <h3 class="panel-title">Shifts</h3>
+          </li>
+        </ul>
+      </div>
+      <div class="panel-body">
+        {{#if noShifts}}
+        <p>This user has no shifts.</p>
+        {{else}}
+        <table class="table table-hover table-condensed">
+          {{> shiftTableHeader}}
+          <tbody>
+          {{#each shifts}}
+          {{> shiftItemForUser}}
+          {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+
+<template name="newShiftsModal">
+<div class="modal fade" id="newShiftsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add shifts to user</h4>
+      </div>
+      <div class="modal-body">
+        <form class="user-form">
+          <div class="container-fluid">
+            <div class="btn-group btn-group-justified" data-toggle="buttons">
+              <label class="btn btn-default active">
+                <input type="checkbox" name="weekdays" id="Sunday" checked> Su
+              </label>
+              <label class="btn btn-default">
+                <input type="checkbox" name="weekdays" id="Monday"> M
+              </label>
+              <label class="btn btn-default">
+                <input type="checkbox" name="weekdays" id="Tuesday"> Tu
+              </label>
+              <label class="btn btn-default">
+                <input type="checkbox" name="weekdays" id="Wednesday"> W
+              </label>
+              <label class="btn btn-default">
+                <input type="checkbox" name="weekdays" id="Thursday"> Th
+              </label>
+              <label class="btn btn-default">
+                <input type="checkbox" name="weekdays" id="Friday"> F
+              </label>
+              <label class="btn btn-default">
+                <input type="checkbox" name="weekdays" id="Saturday"> Sa
+              </label>
+            </div>
+            <br />
+            <label for="fromDate">Start Date</label>
+            <input type="date" class="form-control" id="fromDate">
+            <br />
+            <label for="toDate">End Date</label>
+            <input type="date" class="form-control" id="toDate">
+            <br />
+            <label for="startTime">Start Time</label>
+            <input type="time" step="1800" class="form-control" id="startTime">
+            <br />
+            <label for="endTime">End Time</label>
+            <input type="time" step="1800" class="form-control" id="endTime">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="newShiftsButton btn btn-success" data-dismiss="modal">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+
+<template name="shiftItemForUser">
+<tr>
+  {{> shiftRow}}
+  <td>
+    <button class="deleteShiftButton btn btn-danger btn-sm">{{_id}}</button>
+  </td>
+</tr>
+</template>

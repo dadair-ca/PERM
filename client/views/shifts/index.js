@@ -56,10 +56,6 @@ Template.shiftItemOwned.events({
       return;
     }
 
-    var shiftProperties = {
-      ownerId: null
-    };
-
     Meteor.call('dropShift', this, function(error) {
       if (error) {
         throwFlash('danger', 'You cannot drop that shift.');

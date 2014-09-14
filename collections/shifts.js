@@ -6,6 +6,21 @@ Meteor.methods({
     Shifts.update({_id: shift._id}, {$set: {ownerId: null}});
   },
 
+  deleteShift: function(shift) {
+    Shifts.remove({_id: shift._id});
+  },
+
+  createShift: function(shift) {
+    Shifts.insert({
+      ownerId: shift.ownerId,
+      when: {
+        day: shift.when.day,
+        start: shift.when.start
+      },
+      duration: shift.duration
+    });
+  },
+
   pickupShift: function(shift) {
     var user = Meteor.user();
     PickUps.insert({ownerId: user._id, shiftId: shift._id});

@@ -6,7 +6,7 @@
         <h3 class="panel-title">Your attendance stats</h3>
       </div>
       <div class="panel-body">
-        {{> attendanceStats}}
+        <div id="{{userId}}-attendancePie"></div>
       </div>
     </div>
   </div>
@@ -135,7 +135,6 @@
 </template>
 
 <template name="attendanceStats">
-<div id="attendancePie"></div>
 </template>
 
 <template name="shiftRow">
