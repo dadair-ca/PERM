@@ -55,7 +55,7 @@ Template.usersShow.events({
     var startingDay = startMoment.day();
 
     // Cannot schedule people for today
-    for (i = 1; i <= daysBetween; i++) {
+    for (i = 0; i <= daysBetween; i++) {
       var clone = startMoment.clone();
       var date = clone.add(i, 'days');
       if (_.contains(days, date.day())) {
@@ -82,12 +82,24 @@ Template.shiftItemForUser.events({
   'click .deleteShiftButton': function(evt) {
     evt.preventDefault();
 
-    console.log(this);
     Meteor.call('deleteShift', this, function(err) {
       if (err) {
         throwFlash('danger', err.reason);
       } else {
         throwFlash('success', 'Deleted shift.');
+      }
+    });
+  },
+
+  'click .dropShiftButton': function(evt) {
+    evt.preventDefault();
+
+    console.log(this);
+    Meteor.call('dropShift', this, function(err) {
+      if (err) {
+        throwFlash('danger', err.reason);
+      } else {
+        throwFlash('success', 'Dropped shift.');
       }
     });
   }

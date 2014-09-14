@@ -33,9 +33,13 @@ Meteor.methods({
       throw new Meteor.Error(403, "Cannot delete the administrator.");
     }
 
-    Roles.setUserRoles(user, []);
+    var userShifts = Shifts.find({ownerId: user._id});
+    userShifts.forEach(function(shift) {
+      Shifts.update({_id: shift._id}, {$set: {ownerId: null}});
+    });
 
     Meteor.users.remove({_id: user._id});
+    Roles.setUserRoles(user, []);
   },
 });
 

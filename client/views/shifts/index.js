@@ -21,7 +21,10 @@ Template.shiftsIndex.helpers({
   noneAttended: function() {
     var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
     return Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$lte: now}}, {sort: {'when.day': -1}}).count() == 0;
-  }
+  },
+  userId: function() {
+    return Meteor.user()._id;
+  },
 });
 
 Template.shiftItemOwned.helpers({
