@@ -1,6 +1,7 @@
 if (Meteor.users.find().count() === 0) {
   var users = [
     {name: "David Adair", email: "dadair@ucalgary.ca", roles:['admin']},
+    {name: "Jianling Xie", email: "Jianling.Xie@albertahealthservices.ca", roles:['admin']},
     ];
 
   _.each(users, function(user) {

@@ -20,7 +20,9 @@ Meteor.methods({
       Roles.addUsersToRoles(id, user.roles);
     }
 
-    Accounts.sendEnrollmentEmail(id);
+    //TODO: re-enable emails when in production
+    console.log("Re-enable emails to send enrollment email.");
+    //Accounts.sendEnrollmentEmail(id);
   },
   deleteUser: function(user) {
     var loggedInUser = Meteor.user();

@@ -9,10 +9,12 @@ Template.shiftsIndex.helpers({
     return Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$lte: now}}, {sort: {'when.day': -1}});
   },
   droppedShifts: function() {
-    return Shifts.find({ownerId: null}, {sort: {'when.day': 1}});
+    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
+    return Shifts.find({ownerId: null, 'when.day': {$gt: now}}, {sort: {'when.day': 1}});
   },
   noneAvailable: function() {
-    return Shifts.find({ownerId: null}).count() == 0;
+    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
+    return Shifts.find({ownerId: null, 'when.day': {$gt: now}}, {sort: {'when.day': 1}}).count() == 0;
   },
   noneUpcoming: function() {
     var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");

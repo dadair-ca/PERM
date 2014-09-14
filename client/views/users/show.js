@@ -58,7 +58,7 @@ Template.usersShow.events({
 
     var daysBetween = moment(endDate).diff(moment(startDate), 'days');
 
-    if (daysBetween < 1) {
+    if (daysBetween < 0) {
       throwFlash('danger', 'The end date must be after the start date.');
       return;
     }
