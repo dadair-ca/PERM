@@ -21,4 +21,24 @@ Template.signIn.events({
       }
     });
   },
+
+  'click .forgotPassword': function(evt) {
+    evt.preventDefault();
+
+    var email = $('#signin_email').val();
+    if (email == "") {
+      throwFlash('danger', 'Please enter your email in the email field.');
+      return;
+    }
+
+    var options = {email: email};
+
+    Accounts.forgotPassword(options, function(err) {
+      if (err) {
+        throwFlash('danger', err.reason);
+      } else {
+        throwFlash('success', 'An email has been sent to the specified address which will allow you to reset your password.');
+      }
+    });
+  },
 });
