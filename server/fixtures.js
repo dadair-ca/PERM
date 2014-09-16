@@ -1,3 +1,17 @@
+(function () {
+  "use strict";
+
+  Accounts.urls.resetPassword = function(token) {
+    return Meteor.absoluteUrl('reset-password/' + token);
+  };
+  Accounts.urls.verifyEmail = function(token) {
+    return Meteor.absoluteUrl('verify-email/' + token);
+  };
+  Accounts.urls.enrollAccount = function(token) {
+    return Meteor.absoluteUrl('enroll-account/' + token);
+  };
+})();
+
 if (Meteor.users.find().count() === 0) {
   var users = [
     {
@@ -6,8 +20,8 @@ if (Meteor.users.find().count() === 0) {
       roles:['admin']
     },
     {
-      name: "Janell Lauter",
-      email: "jtlauter@ucalgary.ca",
+      name: "Fake McGee",
+      email: "fake@perm.com",
       roles:['student', 'command']
     },
     {
@@ -52,12 +66,14 @@ if (Meteor.users.find().count() === 0) {
 
     id = Accounts.createUser({
       email: user.email,
-      password: "test",
+      password: Meteor.uuid().split('-')[0],
       profile: {name: user.name}
     });
 
     if (user.roles.length > 0) {
       Roles.addUsersToRoles(id, user.roles);
     }
+
+    Accounts.sendEnrollmentEmail(id);
   });
 }

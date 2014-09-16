@@ -35,15 +35,12 @@ Meteor.methods({
       return user.emails[0].address;
     });
 
-    console.log("Re-enable emails to send: " + email.subject);
-
-    //TODO: re-enable when in production
-    //Email.send({
-    //  from: fromEmail,
-    //  to: toEmail,
-    //  replyTo: fromEmail || undefined,
-    //  subject: email.subject,
-    //  text: email.message
-    //});
+    Email.send({
+      from: fromEmail,
+      to: toEmail,
+      replyTo: fromEmail || undefined,
+      subject: email.subject,
+      text: email.message
+    });
   },
 });
