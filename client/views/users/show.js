@@ -5,6 +5,9 @@ Template.usersShow.helpers({
   noShifts: function() {
     return Shifts.find({ownerId: this._id}, {sort: {'when.day': 1}}).count() == 0;
   },
+  roles: function() {
+    return this.roles;
+  },
 });
 
 Template.newShiftsModal.helpers({

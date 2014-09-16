@@ -5,11 +5,21 @@ Template.userItem.helpers({
   role: function() {
     return this.roles[0];
   },
+  rolesList: function() {
+    var r = "";
+    for (i = 0; i < this.roles.length; i++) {
+      r = r + this.roles[i];
+      if (i < this.roles.length - 1) {
+        r = r + ', ';
+      }
+    }
+    return r;
+  },
 });
 
 Template.usersIndex.helpers({
   users: function() {
-    return Meteor.users.find();
+    return Meteor.users.find({}, {sort: {'profile.name': 1}});
   }
 });
 

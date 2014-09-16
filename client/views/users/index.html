@@ -15,7 +15,7 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Role</th>
+              <th>Roles</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -34,7 +34,9 @@
 <template name="userItem">
 <tr>
   <td><a href="{{pathFor 'usersShow'}}">{{profile.name}}</a></td>
-  <td>{{role}}</td>
+  <td>
+  {{rolesList}}
+  </td>
   <td><button class="btn btn-sm btn-danger" data-toggle="modal"
       data-target="#{{_id}}-confirmDeleteModal">Delete</button></td>
 </tr>
@@ -74,6 +76,7 @@
             <label for="user-role">Role</label>
             <select class="form-control" id="user-role">
               <option value="student">Student</option>
+              <option value="nurse">Nurse</option>
               <option value="admin">Admin</option>
             </select>
             <br />
