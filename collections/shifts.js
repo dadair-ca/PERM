@@ -17,7 +17,8 @@ Meteor.methods({
         day: shift.when.day,
         start: shift.when.start
       },
-      duration: shift.duration
+      duration: shift.duration,
+      type: shift.type
     });
   },
 

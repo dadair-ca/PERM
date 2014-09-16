@@ -23,7 +23,7 @@ Template.calendar.rendered = function() {
         var endingDate = moment(shift.when.day + ' ' + shift.when.start, "YYYY-MM-DD h:mmA").add(shift.duration, 'hours').toDate();
         var evt = {
           id: shift._id,
-          title: title,
+          title: title + ' (' + shift.type + ')',
           start: startingDate,
           end: endingDate,
           allDay: false,

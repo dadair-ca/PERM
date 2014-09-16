@@ -42,6 +42,7 @@ Template.usersShow.events({
     var endDate = $('input[id="toDate"]').val();
     var startTime = $('input[id="startTime"]').val();
     var endTime = $('input[id="endTime"]').val();
+    var shiftType = $('#shift-role').val();
 
     if (startDate == "" || endDate == "" || startTime == "" || endTime == "") {
       throwFlash('danger', 'Please fill in all form fields.');
@@ -89,7 +90,8 @@ Template.usersShow.events({
             day: dateToSchedule,
             start: moment(startTime, 'hh:mm').format('h:mmA')
           },
-          duration: hoursBetween
+          duration: hoursBetween,
+          type: shiftType
         };
         Meteor.call('createShift', shift, function(error) {
           if (error) {

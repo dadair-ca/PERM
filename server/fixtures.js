@@ -17,7 +17,7 @@ if (Meteor.users.find().count() === 0) {
     {
       name: "David Adair",
       email: "dadair@ucalgary.ca",
-      roles:['admin']
+      roles:['admin', 'student']
     },
     {
       name: "Fake McGee",

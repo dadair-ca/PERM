@@ -104,6 +104,13 @@
             <label for="endTime">End Time</label>
             <input type="time" step="1800" class="form-control" id="endTime"
             value={{endTime}}>
+            <br />
+            <label for="shift-role">Shift Type</label>
+            <select class="form-control" id="shift-role">
+              {{#each roles}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
+            </select>
           </div>
         </form>
       </div>
@@ -130,4 +137,5 @@
 <td> {{day}} </td>
 <td> {{startTime}} </td>
 <td> {{endTime}} </td>
+<td> {{type}} </td>
 </template>
