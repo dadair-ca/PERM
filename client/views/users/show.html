@@ -112,10 +112,16 @@
 
 <template name="shiftItemForUser">
 <tr>
-  {{> shiftRow}}
+  {{> userShiftRow}}
   <td>
     <button class="deleteShiftButton btn btn-danger btn-sm">Delete</button>
     <button class="dropShiftButton btn btn-warning btn-sm">Drop</button>
   </td>
 </tr>
+</template>
+
+<template name="userShiftRow">
+<td> {{day}} </td>
+<td> {{startTime}} </td>
+<td> {{endTime}} </td>
 </template>

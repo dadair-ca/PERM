@@ -45,30 +45,38 @@ Template.usersShow.events({
       return;
     }
 
+    console.log('startDate: ' + startDate);
+    console.log('endDate: ' + endDate);
+    console.log('startTime: ' + startTime);
+    console.log('endTime: ' + endTime);
+
     Session.set("startDate", startDate);
     Session.set("endDate", endDate);
     Session.set("startTime", startTime);
     Session.set("endTime", endTime);
 
-    var hoursBetween = moment(endTime, 'hh:mm').diff(moment(startTime, 'hh:mm'), 'hours', true);
+    var startTimeMoment = moment(startTime, 'hh:mm');
+    var endTimeMoment = moment(endTime, 'hh:mm');
+
+    var hoursBetween = endTimeMoment.diff(startTimeMoment, 'hours', true);
     if (hoursBetween <= 0) {
       throwFlash('danger', 'The end time must be after the start time.');
       return;
     }
 
-    var daysBetween = moment(endDate).diff(moment(startDate), 'days');
+    var startDateMoment = moment(startDate);
+    var startingDay = startDateMoment.day();
+
+    var daysBetween = moment(endDate).diff(startDateMoment, 'days');
 
     if (daysBetween < 0) {
       throwFlash('danger', 'The end date must be after the start date.');
       return;
     }
 
-    var startMoment = moment(startDate);
-    var startingDay = startMoment.day();
-
     // Cannot schedule people for today
     for (i = 0; i <= daysBetween; i++) {
-      var clone = startMoment.clone();
+      var clone = startDateMoment.clone();
       var date = clone.add(i, 'days');
       if (_.contains(days, date.day())) {
         var dateToSchedule = date.format("YYYY-MM-DD");
@@ -76,7 +84,7 @@ Template.usersShow.events({
           ownerId: shownUserId,
           when: {
             day: dateToSchedule,
-            start: moment(startTime, 'hh:mm').tz('America/Edmonton').format('h:mmA')
+            start: moment(startTime, 'hh:mm').format('h:mmA')
           },
           duration: hoursBetween
         };
@@ -106,7 +114,6 @@ Template.shiftItemForUser.events({
   'click .dropShiftButton': function(evt) {
     evt.preventDefault();
 
-    console.log(this);
     Meteor.call('dropShift', this, function(err) {
       if (err) {
         throwFlash('danger', err.reason);
@@ -115,4 +122,16 @@ Template.shiftItemForUser.events({
       }
     });
   }
+});
+
+Template.userShiftRow.helpers({
+  day: function() {
+    return moment(this.when.day, "YYYY-MM-DD").format("ddd, MMMM DD, YYYY");
+  },
+  startTime: function() {
+    return this.when.start;
+  },
+  endTime: function() {
+    return moment(this.when.start, "h:mmA").add(this.duration, 'hours').format("h:mmA");
+  },
 });
