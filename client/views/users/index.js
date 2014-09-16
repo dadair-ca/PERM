@@ -20,7 +20,13 @@ Template.userItem.helpers({
 Template.usersIndex.helpers({
   users: function() {
     return Meteor.users.find({}, {sort: {'profile.name': 1}});
-  }
+  },
+});
+
+Template.newUserModal.helpers({
+  allRoles: function() {
+    return Meteor.roles.find({}, {sort: {name: -1}});
+  },
 });
 
 Template.usersIndex.events({

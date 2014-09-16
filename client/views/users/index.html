@@ -75,9 +75,9 @@
             <br />
             <label for="user-role">Role</label>
             <select class="form-control" id="user-role">
-              <option value="student">Student</option>
-              <option value="nurse">Nurse</option>
-              <option value="admin">Admin</option>
+              {{#each allRoles}}
+              <option value="{{name}}">{{name}}</option>
+              {{/each}}
             </select>
             <br />
           </div>
