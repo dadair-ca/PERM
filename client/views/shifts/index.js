@@ -135,7 +135,7 @@ Template.shiftRow.rendered = function() {
     },
     series: [{
       type: 'pie',
-      name: 'Attendance',
+      name: 'Stats',
       data: [
         { name: 'Attended', y: attended, color: '#C7F464' },
         { name: 'Upcoming', y: upcoming, color: '#556270' },
