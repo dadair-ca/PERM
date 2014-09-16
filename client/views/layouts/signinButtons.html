@@ -7,9 +7,11 @@
     <!--
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
-    <li><a href="#" class="resetPassword">Edit Account</a></li>
-    <li class="divider"></li>
     -->
+    {{#with currentUser}}
+    <li><a href="{{pathFor 'usersEdit'}}">Edit Account</a></li>
+    {{/with}}
+    <li class="divider"></li>
     <li><a href="#" id="signout">Sign out</a></li>
   </ul>
   </li>

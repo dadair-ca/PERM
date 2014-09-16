@@ -43,6 +43,9 @@ Meteor.methods({
     Meteor.users.remove({_id: user._id});
     Roles.setUserRoles(user, []);
   },
+  editUser: function(args) {
+    Meteor.users.update(args._id, {$set: args.user});
+  },
 });
 
 (function () {

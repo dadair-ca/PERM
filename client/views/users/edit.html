@@ -1,0 +1,25 @@
+<template name="usersEdit">
+<div class="container sign-in-form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Edit account</h3> <a href="#"
+        id="resetPassword">(reset password)</a>
+    </div>
+    <div class="panel-body">
+  <form class="user-form">
+    <div class="container-fluid">
+      <label for="edit-email">Email</label>
+      <input type="email" class="form-control" id="edit-email"
+      value="{{emails.[0].address}}"/>
+      <br />
+      <label for="edit-name">Name</label>
+      <input type="text" class="form-control" id="edit-name"
+      value="{{profile.name}}"/>
+      <br />
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+    </div>
+  </div>
+</div>
+</template>
