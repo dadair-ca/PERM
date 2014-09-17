@@ -80,7 +80,6 @@ Template.usersShow.events({
           type: type
         };
 
-        console.log(shift);
         Meteor.call('createShift', shift, function(error) {
           if (error) {
             throwFlash('danger', error.reason);

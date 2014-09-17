@@ -27,18 +27,36 @@ Meteor.methods({
 
   sendEmail: function(email) {
     var from = Meteor.user();
-    var to = Roles.getUsersInRole(email.type).fetch();
     var fromEmail = from.emails[0].address;
+
+    var to = Roles.getUsersInRole(email.type).fetch();
     var toEmail = _.map(to, function(user) {
       return user.emails[0].address;
     });
 
+    // Email to other users with same role as dropped shift
     Email.send({
       from: fromEmail,
       to: toEmail,
       replyTo: fromEmail || undefined,
       subject: email.subject,
       text: email.message
+    });
+
+    var admins = Roles.getUsersInRole('admin').fetch();
+    var adminEmails = _.map(to, function(admin) {
+      return admin.emails[0].address;
+    });
+
+    var content = "Reason:\n" + email.excuse + "\n\nOriginal message:\n" + email.message;
+
+    // Email to administrators
+    Email.send({
+      from: fromEmail,
+      to: adminEmails,
+      replyTo: fromEmail || undefined,
+      subject: email.subject,
+      text: content
     });
   },
 });

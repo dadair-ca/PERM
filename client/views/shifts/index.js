@@ -50,18 +50,22 @@ Template.shiftItemOwned.events({
     var email = {
       subject: $('#'+ currentShiftId + '-email_subject').val(),
       message: $('#'+ currentShiftId + '-email_message').val(),
+      excuse: $('#'+ currentShiftId + '-email_excuse').val(),
       type: this.type
     }
 
     // Add default message
-    if (email.subject == "") {
+    if (email.subject === "") {
       throwFlash('danger', 'Your subject cannot be empty!');
     }
-    if (email.message == "") {
+    if (email.message === "") {
       throwFlash('danger', 'Your message cannot be empty!');
     }
+    if (email.excuse === "") {
+      throwFlash('danger', 'You must include a message for the administrators.');
+    }
 
-    if (email.subject == "" || email.message == "") {
+    if (email.subject === "" || email.message === "" || email.excuse === "") {
       return;
     }
 
