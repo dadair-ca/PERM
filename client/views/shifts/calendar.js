@@ -19,18 +19,15 @@ Template.calendar.rendered = function() {
         } else {
           title = "Dropped";
         }
-        var color = "";
-        if (shift.type == "admin") color = '#556270';
-        else if (shift.type == "student") color = '#4ECDC4';
-        else if (shift.type == "command") color = '#C44D58';
-        else if (shift.type == "nurse") color = '#C7F464';
+        var shiftClass = "event-" + shift.type;
         var evt = {
           id: shift._id,
           title: title + ' (' + shift.type + ')',
           start: shift.start,
           end: shift.end,
           allDay: false,
-          color: color,
+          className: shiftClass,
+          description: shift.type
         };
         events.push(evt);
       });

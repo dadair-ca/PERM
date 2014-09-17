@@ -40,6 +40,26 @@ li .glyphicon {
   left: -50%;
 }
 
-#calendar .studentEvent {
-  background: red;
+.event-nurse {
+  background: #4ECDC4 !important;
+  color: #fff !important;
+}
+
+.event-student {
+  background: #FF6B6B !important;
+  color: #fff !important;
+}
+
+.event-command {
+  background: #C44D58 !important;
+  color: #fff !important;
+}
+
+.event-admin {
+  background: #556270 !important;
+  color: #fff !important;
+}
+
+.fc {
+  margin-bottom: 50px;
 }
