@@ -13,11 +13,8 @@ Meteor.methods({
   createShift: function(shift) {
     Shifts.insert({
       ownerId: shift.ownerId,
-      when: {
-        day: shift.when.day,
-        start: shift.when.start
-      },
-      duration: shift.duration,
+      start: shift.start,
+      end: shift.end,
       type: shift.type
     });
   },

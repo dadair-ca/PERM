@@ -42,57 +42,48 @@ Template.usersShow.events({
     var endDate = $('input[id="toDate"]').val();
     var startTime = $('input[id="startTime"]').val();
     var endTime = $('input[id="endTime"]').val();
-    var shiftType = $('#shift-role').val();
+    var type = $('#shift-role').val();
 
-    if (startDate == "" || endDate == "" || startTime == "" || endTime == "") {
-      throwFlash('danger', 'Please fill in all form fields.');
-      return;
-    }
-
-    console.log('startDate: ' + startDate);
-    console.log('endDate: ' + endDate);
-    console.log('startTime: ' + startTime);
-    console.log('endTime: ' + endTime);
+    //if (startDate == "" || endDate == "" || startTime == "" || endTime == "") {
+    //  throwFlash('danger', 'Please fill in all form fields.');
+    //  return;
+    //}
 
     Session.set("startDate", startDate);
     Session.set("endDate", endDate);
     Session.set("startTime", startTime);
     Session.set("endTime", endTime);
 
-    var startTimeMoment = moment(startTime, 'hh:mm');
-    var endTimeMoment = moment(endTime, 'hh:mm');
+    var stime = startTime.split(':');
+    var etime = endTime.split(':');
 
-    var hoursBetween = endTimeMoment.diff(startTimeMoment, 'hours', true);
-    if (hoursBetween <= 0) {
-      throwFlash('danger', 'The end time must be after the start time.');
-      return;
-    }
+    var mtn = 'America/Edmonton';
 
-    var startDateMoment = moment(startDate);
-    var startingDay = startDateMoment.day();
+    var start = moment.tz(startDate, mtn).hour(stime[0]).minute(stime[1]);
+    var end = moment.tz(endDate, mtn).hour(etime[0]).minute(etime[1]);
+    var diff = end.diff(start, 'days');
 
-    var daysBetween = moment(endDate).diff(startDateMoment, 'days');
+    for (i = 0; i <= diff + 1; i++) {
+      var s = start.clone();
+      s.add(i, 'days').format();
 
-    if (daysBetween < 0) {
-      throwFlash('danger', 'The end date must be after the start date.');
-      return;
-    }
+      if (_.contains(days, s.day())) {
+        var e = s.clone();
+        e.hour(etime[0]).minute(etime[1]);
 
-    // Cannot schedule people for today
-    for (i = 0; i <= daysBetween; i++) {
-      var clone = startDateMoment.clone();
-      var date = clone.add(i, 'days');
-      if (_.contains(days, date.day())) {
-        var dateToSchedule = date.format("YYYY-MM-DD");
+        // true: shift is overnight
+        if (startTime > endTime) {
+          e.add(1, 'days');
+        }
+
         var shift = {
           ownerId: shownUserId,
-          when: {
-            day: dateToSchedule,
-            start: moment(startTime, 'hh:mm').format('h:mmA')
-          },
-          duration: hoursBetween,
-          type: shiftType
+          start: s.format(),
+          end: e.format(),
+          type: type
         };
+
+        console.log(shift);
         Meteor.call('createShift', shift, function(error) {
           if (error) {
             throwFlash('danger', error.reason);

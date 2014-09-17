@@ -66,7 +66,8 @@ if (Meteor.users.find().count() === 0) {
 
     id = Accounts.createUser({
       email: user.email,
-      password: Meteor.uuid().split('-')[0],
+      //password: Meteor.uuid().split('-')[0],
+      password: 'test',
       profile: {name: user.name}
     });
 
@@ -74,6 +75,6 @@ if (Meteor.users.find().count() === 0) {
       Roles.addUsersToRoles(id, user.roles);
     }
 
-    Accounts.sendEnrollmentEmail(id);
+    //Accounts.sendEnrollmentEmail(id);
   });
 }
