@@ -1,28 +1,28 @@
 Template.shiftsIndex.helpers({
   //upcoming shifts
   shifts: function() {
-    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
-    return Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$gt: now}}, {sort: {'when.day': 1}});
+    var now = moment().tz('America/Edmonton').format();
+    return Shifts.find({ownerId: Meteor.user()._id, start: {$gt: now}}, {sort: {start: 1}});
   },
   expiredShifts: function() {
-    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
-    return Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$lte: now}}, {sort: {'when.day': -1}});
+    var now = moment().tz('America/Edmonton').format();
+    return Shifts.find({ownerId: Meteor.user()._id, start: {$lte: now}}, {sort: {start: -1}});
   },
   droppedShifts: function() {
-    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
-    return Shifts.find({ownerId: null, 'when.day': {$gt: now}}, {sort: {'when.day': 1}});
+    var now = moment().tz('America/Edmonton').format();
+    return Shifts.find({ownerId: null, start: {$gt: now}}, {sort: {start: 1}});
   },
   noneAvailable: function() {
-    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
-    return Shifts.find({ownerId: null, 'when.day': {$gt: now}}, {sort: {'when.day': 1}}).count() == 0;
+    var now = moment().tz('America/Edmonton').format();
+    return Shifts.find({ownerId: null, start: {$gt: now}}, {sort: {start: 1}}).count() == 0;
   },
   noneUpcoming: function() {
-    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
-    return Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$gt: now}}, {sort: {'when.day': 1}}).count() == 0;
+    var now = moment().tz('America/Edmonton').format();
+    return Shifts.find({ownerId: Meteor.user()._id, start: {$gt: now}}, {sort: {start: 1}}).count() == 0;
   },
   noneAttended: function() {
-    var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
-    return Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$lte: now}}, {sort: {'when.day': -1}}).count() == 0;
+    var now = moment().tz('America/Edmonton').format();
+    return Shifts.find({ownerId: Meteor.user()._id, start: {$lte: now}}, {sort: {start: -1}}).count() == 0;
   },
   userId: function() {
     return Meteor.user()._id;
@@ -30,11 +30,14 @@ Template.shiftsIndex.helpers({
 });
 
 Template.shiftItemOwned.helpers({
+  startTime: function() {
+    return moment.tz(this.start, zone()).format('h:mmA');
+  },
   endTime: function() {
-    return moment(this.when.start, 'h:mmA').add(this.duration, 'hours').format('h:mmA');
+    return moment.tz(this.end, zone()).format('h:mmA');
   },
   formattedDate: function() {
-    return moment(this.when.day, 'YYYY-MM-DD').format('dddd, MMMM Do YYYY');
+    return moment.tz(this.start, zone()).format('dddd, MMMM Do YYYY');
   }
 });
 
@@ -99,12 +102,12 @@ Template.shiftItemDropped.events({
 });
 
 Template.shiftRow.rendered = function() {
-  var now = moment().tz('America/Edmonton').format("YYYY-MM-DD");
+  var now = moment().tz('America/Edmonton').format();
 
   var total = Shifts.find({ownerId: Meteor.user()._id}).count();
-  var upcoming = Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$gt: now}}).count();
+  var upcoming = Shifts.find({ownerId: Meteor.user()._id, start: {$gt: now}}).count();
 
-  var attended = Shifts.find({ownerId: Meteor.user()._id, 'when.day': {$lte: now}}, {sort: {'when.day': -1}}).count();
+  var attended = Shifts.find({ownerId: Meteor.user()._id, start: {$lte: now}}, {sort: {start: -1}}).count();
   var dropped = Drops.find({ownerId: Meteor.user()._id}).count();
   var pickedup = PickUps.find({ownerId: Meteor.user()._id}).count();
 
@@ -154,12 +157,12 @@ Template.shiftRow.rendered = function() {
 
 Template.shiftRow.helpers({
   day: function() {
-    return moment(this.when.day, "YYYY-MM-DD").format("ddd, MMMM DD, YYYY");
+    return moment.tz(this.start, zone()).format("ddd, MMMM DD, YYYY");
   },
   startTime: function() {
-    return this.when.start;
+    return moment.tz(this.start, zone()).format("h:mmA");
   },
   endTime: function() {
-    return moment(this.when.start, "h:mmA").add(this.duration, 'hours').format("h:mmA");
+    return moment.tz(this.end, zone()).format("h:mmA");
   },
 });

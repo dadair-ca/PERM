@@ -19,8 +19,6 @@ Template.calendar.rendered = function() {
         } else {
           title = "Dropped";
         }
-        var startingDate = moment(shift.when.day + ' ' + shift.when.start, "YYYY-MM-DD h:mmA").toDate();
-        var endingDate = moment(shift.when.day + ' ' + shift.when.start, "YYYY-MM-DD h:mmA").add(shift.duration, 'hours').toDate();
         var color = "";
         if (shift.type == "admin") color = '#556270';
         else if (shift.type == "student") color = '#4ECDC4';
@@ -29,8 +27,8 @@ Template.calendar.rendered = function() {
         var evt = {
           id: shift._id,
           title: title + ' (' + shift.type + ')',
-          start: startingDate,
-          end: endingDate,
+          start: shift.start,
+          end: shift.end,
           allDay: false,
           color: color,
         };

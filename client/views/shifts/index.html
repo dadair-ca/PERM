@@ -108,8 +108,7 @@
                 id="{{_id}}-email_subject" value="PEMRAP Shift Available!"/>
                 <br />
                 <label for="{{_id}}-email_message">Message</label>
-                <textarea rows="5" class="form-control"
-                  id="{{_id}}-email_message">I have dropped a PEMRAP shift on {{formattedDate}} from {{when.start}} to {{endTime}}.</textarea>
+                <textarea rows="5" class="form-control" id="{{_id}}-email_message">I have dropped a PEMRAP shift on {{formattedDate}} from {{startTime}} to {{endTime}}.</textarea>
                 <br />
               </div>
             </form>
@@ -140,10 +139,10 @@
 </template>
 
 <template name="shiftRow">
-<td> {{day}} </td>
-<td> {{startTime}} </td>
-<td> {{endTime}} </td>
-<td> {{type}} </td>
+<td>{{day}}</td>
+<td>{{startTime}}</td>
+<td>{{endTime}}</td>
+<td>{{type}}</td>
 </template>
 
 <template name="shiftTableHeader">
