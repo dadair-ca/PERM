@@ -27,9 +27,9 @@ Meteor.methods({
 
   sendEmail: function(email) {
     var from = Meteor.user();
-    var to = Meteor.users.find({});
+    var to = Roles.getUsersInRole(email.type).fetch();
     var fromEmail = from.emails[0].address;
-    var toEmail = Meteor.users.find().map(function(user) {
+    var toEmail = _.map(to, function(user) {
       return user.emails[0].address;
     });
 
