@@ -1,1 +1,3 @@
-formatString = "YYYY-MM-DD h:mmA";
+zone = function() {
+  return 'America/Edmonton';
+};

@@ -1,9 +1,9 @@
 Template.usersShow.helpers({
   shifts: function() {
-    return Shifts.find({ownerId: this._id}, {sort: {'when.day': 1}});
+    return Shifts.find({ownerId: this._id}, {sort: {start: 1}});
   },
   noShifts: function() {
-    return Shifts.find({ownerId: this._id}, {sort: {'when.day': 1}}).count() == 0;
+    return Shifts.find({ownerId: this._id}, {sort: {start: 1}}).count() == 0;
   },
   roles: function() {
     return this.roles;
@@ -44,10 +44,10 @@ Template.usersShow.events({
     var endTime = $('input[id="endTime"]').val();
     var type = $('#shift-role').val();
 
-    //if (startDate == "" || endDate == "" || startTime == "" || endTime == "") {
-    //  throwFlash('danger', 'Please fill in all form fields.');
-    //  return;
-    //}
+    if (startDate == "" || endDate == "" || startTime == "" || endTime == "") {
+      throwFlash('danger', 'Please fill in all form fields.');
+      return;
+    }
 
     Session.set("startDate", startDate);
     Session.set("endDate", endDate);
@@ -57,13 +57,11 @@ Template.usersShow.events({
     var stime = startTime.split(':');
     var etime = endTime.split(':');
 
-    var mtn = 'America/Edmonton';
-
-    var start = moment.tz(startDate, mtn).hour(stime[0]).minute(stime[1]);
-    var end = moment.tz(endDate, mtn).hour(etime[0]).minute(etime[1]);
+    var start = moment.tz(startDate, zone()).hour(stime[0]).minute(stime[1]);
+    var end = moment.tz(endDate, zone()).hour(etime[0]).minute(etime[1]);
     var diff = end.diff(start, 'days');
 
-    for (i = 0; i <= diff + 1; i++) {
+    for (i = 0; i <= diff; i++) {
       var s = start.clone();
       s.add(i, 'days').format();
 
@@ -71,7 +69,6 @@ Template.usersShow.events({
         var e = s.clone();
         e.hour(etime[0]).minute(etime[1]);
 
-        // true: shift is overnight
         if (startTime > endTime) {
           e.add(1, 'days');
         }
@@ -122,12 +119,12 @@ Template.shiftItemForUser.events({
 
 Template.userShiftRow.helpers({
   day: function() {
-    return moment(this.when.day, "YYYY-MM-DD").format("ddd, MMMM DD, YYYY");
+    return moment.tz(this.start, zone()).format("ddd, MMMM DD, YYYY");
   },
   startTime: function() {
-    return this.when.start;
+    return moment.tz(this.start, zone()).format("h:mmA");
   },
   endTime: function() {
-    return moment(this.when.start, "h:mmA").add(this.duration, 'hours').format("h:mmA");
+    return moment.tz(this.end, zone()).format("h:mmA");
   },
 });
