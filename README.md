@@ -37,11 +37,11 @@ Minimum Viable Product
 
 Version 1.1
 -----------
-- [ ] Users should be able to see a calendar view of all shifts
-- [ ] Users should be categorized as [student, command, nurse, admin]
-- [ ] Shifts should be categorized as [student, command, nurse, admin]
+- [x] Users should be able to see a calendar view of all shifts
+- [x] Users should be categorized as [student, command, nurse, admin]
+- [x] Shifts should be categorized as [student, command, nurse, admin]
 - [ ] Users should be able to pick up shifts that match their role
-- [ ] Users should be able to reset their password
+- [x] Users should be able to reset their password
 - [ ] Users should be able to upload a profile picture
 - [ ] /users/:id and /shifts should be unified, with functionality based on
   current user
