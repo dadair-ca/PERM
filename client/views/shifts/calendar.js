@@ -20,6 +20,7 @@ Template.calendar.rendered = function() {
           title = "Dropped";
         }
         var shiftClass = "event-" + shift.type;
+        if (shift.ownerId === null) shiftClass = shiftClass + ' event-dropped';
         var evt = {
           id: shift._id,
           title: title + ' (' + shift.type + ')',

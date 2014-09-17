@@ -60,6 +60,12 @@ li .glyphicon {
   color: #fff !important;
 }
 
+.event-dropped {
+  background: yellow !important;
+  color: #000 !important;
+  font-weight: bold !important;
+}
+
 .fc {
   margin-bottom: 50px;
 }

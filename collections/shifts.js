@@ -44,7 +44,7 @@ Meteor.methods({
     });
 
     var admins = Roles.getUsersInRole('admin').fetch();
-    var adminEmails = _.map(to, function(admin) {
+    var adminEmails = _.map(admins, function(admin) {
       return admin.emails[0].address;
     });
 
