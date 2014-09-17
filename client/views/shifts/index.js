@@ -10,11 +10,11 @@ Template.shiftsIndex.helpers({
   },
   droppedShifts: function() {
     var now = moment().tz('America/Edmonton').format();
-    return Shifts.find({ownerId: null, start: {$gt: now}}, {sort: {start: 1}});
+    return Shifts.find({ownerId: null, start: {$gt: now}, role: {$in: Meteor.user().roles}}, {sort: {start: 1}});
   },
   noneAvailable: function() {
     var now = moment().tz('America/Edmonton').format();
-    return Shifts.find({ownerId: null, start: {$gt: now}}, {sort: {start: 1}}).count() == 0;
+    return Shifts.find({ownerId: null, start: {$gt: now}, role: {$in: Meteor.user().roles}}, {sort: {start: 1}}).count() == 0;
   },
   noneUpcoming: function() {
     var now = moment().tz('America/Edmonton').format();
