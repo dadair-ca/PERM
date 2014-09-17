@@ -13,6 +13,9 @@
 })();
 
 if (Meteor.users.find().count() === 0) {
+  var roles = ['admin', 'student', 'command', 'nurse'];
+  _.each(roles, function(r) { Roles.createRole(r); });
+
   var users = [
     {
       name: "David Adair",
@@ -47,17 +50,12 @@ if (Meteor.users.find().count() === 0) {
     {
       name: "Heather Godfrey",
       email: "Heather.Godfrey@albertahealthservices.ca",
-      roles:['admin', 'nurse']
+      roles:['nurse']
     },
     {
       name: "Jennifer Crotts",
       email: "Jennifer.Crotts@albertahealthservices.ca",
-      roles:['admin', 'nurse']
-    },
-    {
-      name: "Sarah Urquhart",
-      email: "Sarah.Urquhart@albertahealthservices.ca",
-      roles:['admin']
+      roles:['nurse']
     },
   ];
 
@@ -66,8 +64,7 @@ if (Meteor.users.find().count() === 0) {
 
     id = Accounts.createUser({
       email: user.email,
-      //password: Meteor.uuid().split('-')[0],
-      password: 'test',
+      password: Meteor.uuid().split('-')[0],
       profile: {name: user.name}
     });
 
@@ -75,6 +72,6 @@ if (Meteor.users.find().count() === 0) {
       Roles.addUsersToRoles(id, user.roles);
     }
 
-    //Accounts.sendEnrollmentEmail(id);
+    Accounts.sendEnrollmentEmail(id);
   });
 }

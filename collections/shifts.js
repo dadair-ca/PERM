@@ -55,7 +55,7 @@ Meteor.methods({
       from: fromEmail,
       to: adminEmails,
       replyTo: fromEmail || undefined,
-      subject: email.subject,
+      subject: "A PEMRAP shift has been dropped!",
       text: content
     });
   },
