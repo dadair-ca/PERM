@@ -115,15 +115,3 @@ Template.shiftItemForUser.events({
     });
   }
 });
-
-Template.userShiftRow.helpers({
-  day: function() {
-    return moment.tz(this.start, zone()).format("ddd, MMMM DD, YYYY");
-  },
-  startTime: function() {
-    return moment.tz(this.start, zone()).format("h:mmA");
-  },
-  endTime: function() {
-    return moment.tz(this.end, zone()).format("h:mmA");
-  },
-});
