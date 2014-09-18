@@ -69,3 +69,15 @@ li .glyphicon {
 .fc {
   margin-bottom: 50px;
 }
+
+.huge-text {
+  font-size: 40px;
+}
+
+.negative {
+  color: #D9534F;
+}
+
+.positive {
+  color: #5CB85C;
+}

@@ -20,11 +20,16 @@
         <li><a href="{{pathFor 'chat'}}"><span class="glyphicon
             glyphicon-comment"> </span>Chat</a></li>
         {{/if}}
-        {{#if isInRole 'admin'}}
-        <li><a href="{{pathFor 'usersIndex'}}"><span class="glyphicon glyphicon-user"> </span>Users</a></li>
-        {{/if}}
       </ul>
-      {{> signinButtons}}
+      <ul class="nav navbar-nav pull-right">
+        {{#if isInRole 'admin'}}
+        <li><a href="{{pathFor 'adminDashboard'}}"><span class="glyphicon
+            glyphicon-dashboard"> </span>Admin Dashboard</a></li>
+        <li><a href="{{pathFor 'usersIndex'}}"><span class="glyphicon
+            glyphicon-user"> </span>Manage Users</a></li>
+        {{/if}}
+        <li>{{> signinButtons}}</li>
+      </ul>
     </div>
   </div>
 </nav>

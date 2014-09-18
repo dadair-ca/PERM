@@ -1,0 +1,28 @@
+<template name="adminDashboard">
+<div class="row">
+  {{> balanceStatCard}}
+</div>
+</template>
+
+<template name="balanceStatCard">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-tasks fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            {{#if isNegative}}
+            <div class="huge-text negative">{{balance}}</div>
+            <div class="negative">Net shift balance!</div>
+            {{else}}
+            <div class="huge-text positive">{{balance}}</div>
+            <div class="positive">Net shift balance!</div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
