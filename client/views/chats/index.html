@@ -1,7 +1,6 @@
 <template name="chat">
 <div class="container">
-  <div class="row">
-      <div class="panel panel-default center-block">
+      <div class="panel panel-default">
         <div class="panel-heading">
           <span class="glyphicon glyphicon-comment"></span> Chat
         </div>
@@ -18,13 +17,12 @@
             </span>
           </div>
         </div>
-      </div>
   </div>
 </div>
 </template>
 
 <template name="chatMessage">
 <div>
-  <b>{{user}}:</b> {{message}}
+  <strong>{{user}}:</strong> {{message}}
 </div>
 </template>
