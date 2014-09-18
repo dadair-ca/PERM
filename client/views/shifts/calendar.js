@@ -14,16 +14,23 @@ Template.calendar.rendered = function() {
       shifts.forEach(function(shift) {
         var user = Meteor.users.findOne({_id: shift.ownerId});
         var title;
+        var userIsNew = false;
         if (user) {
           title = user.profile.name;
+          var userStart = moment(user.createdAt, zone());
+          userIsNew = (userStart.diff(moment(), 'months', true) < 4);
         } else {
           title = "Dropped";
         }
+        title = title + ' (' + shift.type + ')';
+
         var shiftClass = "event-" + shift.type;
         if (shift.ownerId === null) shiftClass = shiftClass + ' event-dropped';
+
+        if (userIsNew) title = title + ' ★';
         var evt = {
           id: shift._id,
-          title: title + ' (' + shift.type + ')',
+          title: title,
           start: shift.start,
           end: shift.end,
           allDay: false,

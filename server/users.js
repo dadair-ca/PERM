@@ -1,8 +1,12 @@
 Accounts.validateNewUser(function (user) {
   var loggedInUser = Meteor.user();
 
-  if (Roles.userIsInRole(loggedInUser, 'admin')) {
-    return true;
+  if (loggedInUser && Roles.userIsInRole(loggedInUser, 'admin')) {
+    if (user.password >= 6) {
+      return true;
+    } else {
+      throw new Meteor.Error(403, "Password must have at least 6 characters.");
+    }
   }
 
   throw new Meteor.Error(403, "Not authorized to create new users.");
@@ -13,7 +17,8 @@ Meteor.methods({
     var id = Accounts.createUser({
       email: user.email,
       password: Meteor.uuid().split('-')[0],
-      profile: {name: user.name}
+      profile: {name: user.name},
+      createdAt: moment().format()
     });
 
     if (user.roles.length > 0) {

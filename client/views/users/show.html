@@ -12,8 +12,11 @@
           <img src="http://placehold.it/230" alt="Avatar">
         </div>
         -->
-        <p><strong>{{profile.name}}</strong></p>
-        <p>Roles:</p>
+        <h4>Name</h4>
+        <p>{{profile.name}}</p>
+        <h4>Joined</h4>
+        <p>{{created}}</p>
+        <h4>Roles</h4>
         <ul>
           {{#each roles}}
           <li>{{this}}</li>

@@ -8,6 +8,9 @@ Template.usersShow.helpers({
   roles: function() {
     return this.roles;
   },
+  created: function() {
+    return moment(this.createdAt).format('dddd, MMMM Do YYYY');
+  },
 });
 
 Template.newShiftsModal.helpers({
