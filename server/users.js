@@ -1,15 +1,14 @@
 Accounts.validateNewUser(function (user) {
   var loggedInUser = Meteor.user();
 
+  console.log(user);
+
   if (loggedInUser && Roles.userIsInRole(loggedInUser, 'admin')) {
-    if (user.password >= 6) {
-      return true;
-    } else {
-      throw new Meteor.Error(403, "Password must have at least 6 characters.");
-    }
+    return true;
   }
 
   throw new Meteor.Error(403, "Not authorized to create new users.");
+  return false;
 });
 
 Meteor.methods({
@@ -43,8 +42,8 @@ Meteor.methods({
       Shifts.update({_id: shift._id}, {$set: {ownerId: null}});
     });
 
-    Meteor.users.remove({_id: user._id});
     Roles.setUserRoles(user, []);
+    Meteor.users.remove({_id: user._id});
   },
   editUser: function(args) {
     Meteor.users.update(args._id, {$set: args.user});

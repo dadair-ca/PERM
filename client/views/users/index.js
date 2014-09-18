@@ -35,8 +35,10 @@ Template.usersIndex.events({
 
     var user = {
       email: $('#user-email').val(),
+      password: Meteor.uuid().split('-')[0],
       roles: [$('#user-role').val()],
-      name: $('#user-name').val()
+      name: $('#user-name').val(),
+      createdAt: moment().format()
     };
 
     if (user.email == "") {
