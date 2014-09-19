@@ -3,7 +3,7 @@ Template.usersShow.helpers({
     return Shifts.find({ownerId: this._id}, {sort: {start: 1}});
   },
   noShifts: function() {
-    return Shifts.find({ownerId: this._id}, {sort: {start: 1}}).count() == 0;
+    return Shifts.find({ownerId: this._id}, {sort: {start: 1}}).count() === 0;
   },
   roles: function() {
     return this.roles;

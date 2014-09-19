@@ -1,27 +1,41 @@
 <template name="adminDashboard">
 <div class="row">
   {{> balanceStatCard}}
+  {{> shiftLineChart}}
 </div>
 </template>
 
 <template name="balanceStatCard">
-  <div class="col-md-6">
+<div class="col-md-3 col-sm-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-xs-3">
+          <i class="fa fa-tasks fa-5x"></i>
+        </div>
+        <div class="col-xs-9 text-right">
+          {{#if isNegative}}
+          <div class="huge-text negative">{{balance}}</div>
+          <div class="negative">Total net shift balance</div>
+          {{else}}
+          <div class="huge-text positive">{{balance}}</div>
+          <div class="positive">Total net shift balance</div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+
+<template name="shiftLineChart">
+  <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <div class="row">
-          <div class="col-xs-3">
-            <i class="fa fa-tasks fa-5x"></i>
-          </div>
-          <div class="col-xs-9 text-right">
-            {{#if isNegative}}
-            <div class="huge-text negative">{{balance}}</div>
-            <div class="negative">Net shift balance!</div>
-            {{else}}
-            <div class="huge-text positive">{{balance}}</div>
-            <div class="positive">Net shift balance!</div>
-            {{/if}}
-          </div>
-        </div>
+        <h3 class="panel-title">Attendance Stats</h3>
+      </div>
+      <div class="panel-body">
+        <div id="shiftLineChart"></div>
       </div>
     </div>
   </div>

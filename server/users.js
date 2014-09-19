@@ -39,7 +39,8 @@ Meteor.methods({
 
     var userShifts = Shifts.find({ownerId: user._id});
     userShifts.forEach(function(shift) {
-      Shifts.update({_id: shift._id}, {$set: {ownerId: null}});
+      Meteor.call('dropShift', shift);
+      //Shifts.update({_id: shift._id}, {$set: {ownerId: null}});
     });
 
     Roles.setUserRoles(user, []);
