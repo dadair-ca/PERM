@@ -3,7 +3,15 @@ var shiftBalance = function() {
 };
 
 var setSeriesData = function() {
-  var droppedShifts = _.map(Drops.find().fetch(), function(drop) {
+  var currentYearStart = moment.tz('America/Edmonton').month(0).date(1);
+  console.log(currentYearStart.format());
+
+  var thisYearShifts = Shifts.find({start: {$gte: currentYearStart.format()}}).fetch();
+  var thisYearShiftsIds = _.map(thisYearShifts, function(shift) { return shift._id; });
+  var drops = Drops.find({shiftId: {$in: thisYearShiftsIds}}).fetch();
+  var grabs = PickUps.find({shiftId: {$in: thisYearShiftsIds}}).fetch();
+
+  var droppedShifts = _.map(drops, function(drop) {
     var shift = Shifts.findOne({_id: drop.shiftId});
     return shift;
   });
@@ -17,13 +25,36 @@ var setSeriesData = function() {
     return key;
   });
 
-  var monthCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  var grabbedShifts = _.map(grabs, function(grab) {
+    var shift = Shifts.findOne({_id: grab.shiftId});
+    return shift;
+  });
+
+  var grabbedShifts = _.filter(grabbedShifts, function(shift) {
+    return moment().diff(moment(shift.start), 'years') < 1;
+  });
+
+  var monthlyGrabs = _.map(grabbedShifts, function(shift) {
+    var key = {month: moment(shift.start).month()};
+    return key;
+  });
+
+  var dropsCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  var grabsCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  var netBalance = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   _.each(monthlyDrops, function(month) {
-    monthCounts[month.month]++;
+    dropsCount[month.month]++;
+    netBalance[month.month]--;
+  });
+  _.each(monthlyGrabs, function(month) {
+    grabsCount[month.month]++;
+    netBalance[month.month]++;
   });
 
   if (typeof(Highcharts) != "undefined") {
-    Highcharts.charts[0].series[0].setData(monthCounts);
+    Highcharts.charts[0].series[0].setData(dropsCount);
+    Highcharts.charts[0].series[1].setData(grabsCount);
+    Highcharts.charts[0].series[2].setData(netBalance);
   }
 };
 
@@ -39,7 +70,7 @@ Template.shiftLineChart.rendered = function () {
         type: 'column'
       },
       title: {
-        text: 'Shift Drops'
+        text: moment().format("YYYY") + ' Shift Activity'
       },
       xAxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -49,18 +80,18 @@ Template.shiftLineChart.rendered = function () {
         title: {
           text: '# of occurences'
         },
-        min: 0
       },
-      colors: ['#FF6B6B', '#C7F464'],
+      colors: ['#FF6B6B', '#C7F464', '#556270'],
       tooltip: {
         headerFormat: '<b>{series.name}</b><br>',
         pointFormat: '{point.y:.0f}'
       },
 
-      series: [{
-        name: 'Shifts dropped',
-        data: []
-      }]
+      series: [
+        { name: 'Shifts dropped', data: [] },
+        { name: 'Shifts grabbed', data: [] },
+        { name: 'Net balance', type: 'spline', data: [] },
+      ]
     });
   });
   Tracker.autorun(setSeriesData);

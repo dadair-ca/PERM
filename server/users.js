@@ -37,10 +37,10 @@ Meteor.methods({
       throw new Meteor.Error(403, "Cannot delete the administrator.");
     }
 
-    var userShifts = Shifts.find({ownerId: user._id});
+    var now = moment.tz('America/Edmonton').format();
+    var userShifts = Shifts.find({ownerId: user._id, start: {$gte: now}});
     userShifts.forEach(function(shift) {
       Meteor.call('dropShift', shift);
-      //Shifts.update({_id: shift._id}, {$set: {ownerId: null}});
     });
 
     Roles.setUserRoles(user, []);
