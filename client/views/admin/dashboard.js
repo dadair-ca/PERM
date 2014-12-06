@@ -96,3 +96,7 @@ Template.shiftLineChart.rendered = function () {
   });
   Tracker.autorun(setSeriesData);
 }
+
+Template.shiftLeaderBoard.helpers({
+  users: function() { return Meteor.users.find(); }
+});
