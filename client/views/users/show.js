@@ -1,6 +1,7 @@
 Template.usersShow.helpers({
   shifts: function() {
-    return Shifts.find({ownerId: this._id}, {sort: {start: 1}});
+    var now = moment().tz('America/Edmonton').format();
+    return Shifts.find({ownerId: this._id, start: {$gt: now}}, {sort: {start: 1}});
   },
   noShifts: function() {
     return Shifts.find({ownerId: this._id}, {sort: {start: 1}}).count() === 0;
