@@ -1,4 +1,5 @@
-Template.calendar.rendered = function() {
+//Template.calendar.rendered = function() {
+Meteor.autorun(function() {
   $('#shiftCalendar').fullCalendar({
     editable: false,
 
