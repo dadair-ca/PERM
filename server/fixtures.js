@@ -22,41 +22,6 @@ if (Meteor.users.find().count() === 0) {
       email: "dadair@ucalgary.ca",
       roles:['admin', 'student']
     },
-    {
-      name: "Fake McGee",
-      email: "fake@perm.com",
-      roles:['student', 'command']
-    },
-    {
-      name: "Jianling Xie",
-      email: "Jianling.Xie@albertahealthservices.ca",
-      roles:['admin']
-    },
-    {
-      name: "Gabino Travassos",
-      email: "Gabino.Travassos@albertahealthservices.ca",
-      roles:['admin']
-    },
-    {
-      name: "Antonia Stang",
-      email: "Antonia.Stang@albertahealthservices.ca",
-      roles:['admin']
-    },
-    {
-      name: "Stephen Freedman",
-      email: "Stephen.Freedman@albertahealthservices.ca",
-      roles:['admin']
-    },
-    {
-      name: "Heather Godfrey",
-      email: "Heather.Godfrey@albertahealthservices.ca",
-      roles:['nurse']
-    },
-    {
-      name: "Jennifer Crotts",
-      email: "Jennifer.Crotts@albertahealthservices.ca",
-      roles:['nurse']
-    },
   ];
 
   _.each(users, function(user) {
