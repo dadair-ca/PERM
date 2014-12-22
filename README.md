@@ -45,3 +45,7 @@ Version 1.1
 - [ ] Users should be able to upload a profile picture
 - [ ] /users/:id and /shifts should be unified, with functionality based on
   current user
+- [ ] Administrators should be able to change a user's role(s)
+- [ ] Users should have to confirm that they attended a shift
+- [ ] There should be a Study resource for study info
+- [ ] Persistent chat log
