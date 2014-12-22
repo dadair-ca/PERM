@@ -43,4 +43,4 @@ Meteor.autorun(function() {
       callback(events);
     },
   });
-};
+});
