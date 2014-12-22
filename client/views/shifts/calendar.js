@@ -1,5 +1,4 @@
-//Template.calendar.rendered = function() {
-Meteor.autorun(function() {
+Template.calendar.rendered = function() {
   $('#shiftCalendar').fullCalendar({
     editable: false,
 
@@ -43,4 +42,9 @@ Meteor.autorun(function() {
       callback(events);
     },
   });
-});
+
+  Meteor.autorun(function() {
+    var calendarEvents = Shifts.find();
+    $('#shiftCalendar').fullCalendar('refetchEvents');
+  });
+};
