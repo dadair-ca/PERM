@@ -49,3 +49,4 @@ Version 1.1
 - [ ] Users should have to confirm that they attended a shift
 - [ ] There should be a Study resource for study info
 - [ ] Persistent chat log
+- [x] Administrators can specify user starting dates
