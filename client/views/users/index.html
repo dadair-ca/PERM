@@ -57,18 +57,22 @@
 </template>
 
 <template name="newUserModal">
-<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal">
+	  <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+	</button>
         <h4 class="modal-title" id="myModalLabel">Create new user</h4>
       </div>
       <div class="modal-body">
         <form class="user-form">
           <div class="container-fluid">
             <label for="user-email">Email</label>
-            <input type="email" class="form-control" id="user-email" placeholder="example@email.com"/>
+            <input type="email" class="form-control" id="user-email"
+		   placeholder="example@email.com"/>
             <br />
             <label for="user-name">Name</label>
             <input type="text" class="form-control" id="user-name" placeholder="John Doe"/>
@@ -80,12 +84,19 @@
               {{/each}}
             </select>
             <br />
+	    <label for="user-start">Start Date</label>
+	    <input type="date" class="form-control" id="user-start" placeholder="TODO:TODAY"
+		   value="{{today}}"/>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="newUserButton btn btn-success" data-dismiss="modal">Create</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+	  Cancel
+	</button>
+        <button type="button" class="newUserButton btn btn-success" data-dismiss="modal">
+	  Create
+	</button>
       </div>
     </div>
   </div>

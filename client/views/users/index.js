@@ -27,6 +27,9 @@ Template.newUserModal.helpers({
   allRoles: function() {
     return Meteor.roles.find({}, {sort: {name: -1}});
   },
+  today: function() {
+    return moment().tz('America/Edmonton').format("YYYY-MM-DD");
+  },
 });
 
 Template.usersIndex.events({
@@ -38,7 +41,7 @@ Template.usersIndex.events({
       password: Meteor.uuid().split('-')[0],
       roles: [$('#user-role').val()],
       name: $('#user-name').val(),
-      createdAt: moment().format()
+      createdAt: moment($('#user-start').val()).format()
     };
 
     if (user.email == "") {

@@ -17,7 +17,7 @@ Meteor.methods({
       email: user.email,
       password: Meteor.uuid().split('-')[0],
       profile: {name: user.name},
-      createdAt: moment().format()
+      createdAt: moment(user.createdAt).format(),
     });
 
     if (user.roles.length > 0) {
