@@ -37,7 +37,7 @@ Template.calendar.rendered = function() {
                 }
                 title = title + ' (' + shift.type + ')';
                 
-                var shiftClass = "event-" + shift.type;
+                var shiftClass = shift.type;
                 if (shift.ownerId === null) shiftClass = shiftClass + ' event-dropped';
                 
                 var evt = {

@@ -50,4 +50,4 @@ Version 1.1
 - [ ] There should be a Study resource for study info
 - [ ] Persistent chat log
 - [x] Administrators can specify user starting dates
-- [ ] Fix time difference calculation of the calendar
+- [x] Fix time difference calculation of the calendar

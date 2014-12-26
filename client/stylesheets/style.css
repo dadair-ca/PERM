@@ -40,26 +40,6 @@ li .glyphicon {
   left: -50%;
 }
 
-.event-nurse {
-  background: #4ECDC4 !important;
-  color: #fff !important;
-}
-
-.event-student {
-  background: #E7E7E7 !important;
-  color: #333333 !important;
-}
-
-.event-command {
-  background: #C44D58 !important;
-  color: #fff !important;
-}
-
-.event-admin {
-  background: #556270 !important;
-  color: #fff !important;
-}
-
 .event-dropped {
   background: yellow !important;
   color: #000 !important;
@@ -80,4 +60,24 @@ li .glyphicon {
 
 .positive {
   color: #C7F464;
+}
+
+.admin {
+  background: #556270 !important;
+  color: #fff !important;
+}
+
+.student {
+  background: #E7E7E7 !important;
+  color: #333333 !important;
+}
+
+.nurse {
+  background: #4ECDC4 !important;
+  color: #fff !important;
+}
+
+.command {
+  background: #C44D58 !important;
+  color: #fff !important;
 }

@@ -35,7 +35,10 @@
 <tr>
   <td><a href="{{pathFor 'usersShow'}}">{{profile.name}}</a></td>
   <td>
-  {{rolesList}}
+  <!--{{rolesList}}-->
+  {{#each roles}}
+  <span class="label label-primary {{this}}">{{this}}</span>
+  {{/each}}
   </td>
   <td><button class="btn btn-sm btn-danger" data-toggle="modal"
       data-target="#{{_id}}-confirmDeleteModal">Delete</button></td>
