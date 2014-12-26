@@ -40,12 +40,6 @@ li .glyphicon {
   left: -50%;
 }
 
-.event-dropped {
-  background: yellow !important;
-  color: #000 !important;
-  font-weight: bold !important;
-}
-
 .fc {
   margin-bottom: 50px;
 }
@@ -80,4 +74,10 @@ li .glyphicon {
 .command {
   background: #C44D58 !important;
   color: #fff !important;
+}
+
+.event-dropped {
+  background: yellow !important;
+  color: #000 !important;
+  font-weight: bold !important;
 }
