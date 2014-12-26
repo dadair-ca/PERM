@@ -16,6 +16,7 @@ var userTitle = function(user) {
 Template.calendar.rendered = function() {
     $('#shiftCalendar').fullCalendar({
         editable: false,
+        aspectRatio: 1.4,
         
         header: {
             left: 'today prev,next',

@@ -41,7 +41,8 @@ li .glyphicon {
 }
 
 .fc {
-  margin-bottom: 50px;
+    max-width: 900px;
+    margin: 0px auto 50px auto;
 }
 
 .huge-text {
