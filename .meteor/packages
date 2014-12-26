@@ -18,3 +18,5 @@ lepozepo:streams
 pfafman:font-awesome-4
 force-ssl
 
+sanjo:jasmine
+velocity:html-reporter
