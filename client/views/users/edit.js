@@ -1,14 +1,7 @@
 Template.usersEdit.events({
   'click #resetPassword': function(evt) {
     evt.preventDefault();
-
-    var email = $('#edit-email').val();
-    if (email == "") {
-      throwFlash('danger', 'Please enter your email in the email field.');
-      return;
-    }
-
-    var options = {email: email};
+    var options = {email: this.emails[0].address};
 
     Accounts.forgotPassword(options, function(err) {
       if (err) {
@@ -26,15 +19,14 @@ Template.usersEdit.events({
     var args = {
       _id: currentUserId,
       user: {
-        email: $('#edit-email').val(),
         profile: {
           name: $('#edit-name').val(),
         }
       }
     };
 
-    if (args.user.email == "" || args.user.profile.name == "") {
-      throwFlash('danger', 'Email and/or name cannot be empty!');
+    if (args.user.profile.name == "") {
+      throwFlash('danger', 'Your name cannot be blank!');
       return;
     }
 
