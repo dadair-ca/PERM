@@ -1,8 +1,6 @@
 Accounts.validateNewUser(function (user) {
   var loggedInUser = Meteor.user();
 
-  console.log(user);
-
   if (loggedInUser && Roles.userIsInRole(loggedInUser, 'admin')) {
     return true;
   }
@@ -13,11 +11,14 @@ Accounts.validateNewUser(function (user) {
 
 Meteor.methods({
   newUser: function(user) {
+    console.log(user);
     var id = Accounts.createUser({
       email: user.email,
       password: Meteor.uuid().split('-')[0],
-      profile: {name: user.name},
-      createdAt: moment(user.createdAt).format(),
+      profile: {
+	  name: user.name,
+	  started: moment(user.started).format(),
+      },
     });
 
     if (user.roles.length > 0) {

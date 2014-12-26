@@ -13,21 +13,22 @@ Template.calendar.rendered = function() {
       var shifts = Shifts.find();
       shifts.forEach(function(shift) {
         var user = Meteor.users.findOne({_id: shift.ownerId});
-        var title;
+        var title = "";
         var userIsNew = false;
         if (user) {
           title = user.profile.name;
-          var userStart = moment(user.createdAt, zone());
-          userIsNew = (userStart.diff(moment(), 'months', true) < 4);
+          var userStart = moment(user.profile.started);
+	  var timeDifference = userStart.diff(moment(), 'months', true);
+          userIsNew = (timeDifference < 4);
         } else {
           title = "Dropped";
         }
         title = title + ' (' + shift.type + ')';
+        if (userIsNew) title = title + ' ★';
 
         var shiftClass = "event-" + shift.type;
         if (shift.ownerId === null) shiftClass = shiftClass + ' event-dropped';
 
-        if (userIsNew) title = title + ' ★';
         var evt = {
           id: shift._id,
           title: title,

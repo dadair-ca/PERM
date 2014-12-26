@@ -41,8 +41,10 @@ Template.usersIndex.events({
       password: Meteor.uuid().split('-')[0],
       roles: [$('#user-role').val()],
       name: $('#user-name').val(),
-      createdAt: moment($('#user-start').val()).format()
+      started: $('#user-start').val(),
     };
+
+    console.log(user);
 
     if (user.email == "") {
       throwFlash('danger', 'Please enter an email address for the user.');

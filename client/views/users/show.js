@@ -10,7 +10,8 @@ Template.usersShow.helpers({
     return this.roles;
   },
   created: function() {
-    return moment(this.createdAt).format('dddd, MMMM Do YYYY');
+    console.log(this);
+    return moment(this.profile.started).format('dddd, MMMM Do YYYY');
   },
 });
 

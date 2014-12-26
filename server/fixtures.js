@@ -30,8 +30,10 @@ if (Meteor.users.find().count() === 0) {
     id = Accounts.createUser({
       email: user.email,
       password: Meteor.uuid().split('-')[0],
-      profile: {name: user.name},
-      createdAt: moment().format()
+      profile: { 
+	  name: user.name,
+	  started: moment().format(),
+      },
     });
 
     if (user.roles.length > 0) {
