@@ -1,5 +1,5 @@
-describe("True", function() {
-    it("should evaluate to true, proving sanity", function() {
-	      expect(true).toEqual(true);
+describe("Truth", function() {
+    it("should equal true", function() {
+        expect(true).toEqual(true);
     });
 });
