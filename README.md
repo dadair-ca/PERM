@@ -8,7 +8,7 @@ The develop branch is where active development should take place.
 
 Please use pull requests for new features.
 
-Available at [PERM](http://54.186.106.12/).
+Available at [PERM](https://www.pemrap.com).
 
 # TODO
 
