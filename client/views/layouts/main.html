@@ -1,18 +1,20 @@
 <template name="layout">
-{{> header}}
-{{> flashes}}
-<div class="container">
-  {{> yield}}
-</div>
+  {{> header}}
+  {{> flashes}}
+  <div class="container">
+    {{> yield}}
+  </div>
 </template>
 
 <template name="public">
-<div class="jumbotron">
-  <h2>Paediatric Emergency Research Management</h2>
-  <p>Keep up-to-date on shifts and enrollments.</p>
-  {{#if currentUser}}
-  {{else}}
-  <a role="button" href="{{pathFor 'signIn'}}" type="button" class="btn btn-primary btn-lg">Sign in</a>
-  {{/if}}
-</div>
+  <div class="jumbotron">
+    <h2>Paediatric Emergency Research Management</h2>
+    <p>Keep up-to-date on shifts, studies, and enrollments.</p>
+    {{#if currentUser}}
+    {{else}}
+    <a role="button" href="{{pathFor 'signIn'}}" type="button" class="btn btn-primary btn-lg">
+      Sign in
+    </a>
+    {{/if}}
+  </div>
 </template>
