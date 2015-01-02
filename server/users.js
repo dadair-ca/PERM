@@ -55,6 +55,12 @@ Meteor.methods({
         Meteor.call('editUser', args);
 
         var user = Meteor.users.findOne({_id: args._id});
+
+        if (data.role != 'admin'
+            && Roles.userIsInRole(user._id, 'admin')
+            && Roles.getUsersInRole('admin').count() == 1) {
+            throw new Meteor.Error(403, "There must always be at least one administrator.");
+        }
         Roles.setUserRoles(user._id, data.role);
     }
 });
