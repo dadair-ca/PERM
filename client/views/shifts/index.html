@@ -142,19 +142,21 @@
 </template>
 
 <template name="shiftRow">
-<td>
-  <span class="hidden-xs hidden-sm">{{day}}</span>
-  <span class="hidden-md hidden-lg">{{dayMD}}</span>
-</td>
-<td>
-  <span class="hidden-xs hidden-sm">{{start}}</span>
-  <span class="hidden-md hidden-lg">{{startMD}}</span>
-</td>
-<td>
-  <span class="hidden-xs hidden-sm">{{end}}</span>
-  <span class="hidden-md hidden-lg">{{endMD}}</span>
-</td>
-<td>{{type}}</td>
+  <td>
+    <span class="hidden-xs hidden-sm">{{day}}</span>
+    <span class="hidden-md hidden-lg">{{dayMD}}</span>
+  </td>
+  <td>
+    <span class="hidden-xs hidden-sm">{{start}}</span>
+    <span class="hidden-md hidden-lg">{{startMD}}</span>
+  </td>
+  <td>
+    <span class="hidden-xs hidden-sm">{{end}}</span>
+    <span class="hidden-md hidden-lg">{{endMD}}</span>
+  </td>
+  <td>
+    <span class="label label-primary {{type}}">{{type}}</span>
+  </td>
 </template>
 
 <template name="shiftTableHeader">
