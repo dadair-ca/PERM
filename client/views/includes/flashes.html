@@ -1,16 +1,16 @@
 <template name="flashes">
-<div class="container">
-  <div class="row-fluid" id="flashes">
-    {{#each flashes}}
-    {{> flash}}
-    {{/each}}
+  <div class="container">
+    <div class="row-fluid" id="flashes">
+      {{#each flashes}}
+      {{> flash}}
+      {{/each}}
+    </div>
   </div>
-</div>
 </template>
 
 <template name="flash">
-<div class="alert alert-{{type}} alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <strong>{{exclaim}}!</strong> {{message}}
-</div>
+  <div class="alert alert-{{type}} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <strong>{{exclaim}}!</strong> {{message}}
+  </div>
 </template>
