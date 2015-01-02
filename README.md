@@ -14,12 +14,13 @@ Available at [PERM](http://54.186.106.12/).
 
 - [x] Fix login buttons dropdown
 - [x] Deploy to Heroku ~~EC2~~
-- [ ] Add testing framework
+- [x] Add testing framework
 - [x] Get dynamic attendance data from user object
 - [x] Attendance chart should be ~~simple values~~ removed if window is too small
 - [x] Connect to ~~Mailchimp~~ Mailgun
 - [x] Ensure all datetimes are generated for Mountain Time
 - [x] Should use Bootstrap grid system on /shifts so it collapses on mobile
+- [ ] Add unit, integration, and regression tests!!
 
 ## Minimum Viable Product
 
@@ -45,7 +46,7 @@ Available at [PERM](http://54.186.106.12/).
 - [ ] Users should be able to upload a profile picture
 - [ ] /users/:id and /shifts should be unified, with functionality based on
   current user
-- [ ] Administrators should be able to change a user's role(s)
+- [x] Administrators should be able to change a user's role(s)
 - [ ] Users should have to confirm that they attended a shift
 - [ ] There should be a Study resource for study info
 - [ ] Persistent chat log
