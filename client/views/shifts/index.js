@@ -1,10 +1,10 @@
 Template.shiftsIndex.helpers({
     //upcoming shifts
-    shifts: function() {
-        return shiftsFor(Meteor.user()._id);
+    upcomingShifts: function() {
+        return upcomingShiftsFor(Meteor.user()._id);
     },
     noneUpcoming: function() {
-        return shiftsFor(Meteor.user().id).count() == 0;
+        return upcomingShiftsFor(Meteor.user().id).count() == 0;
     },
     expiredShifts: function() {
         return pastShiftsFor(Meteor.user()._id);
@@ -101,14 +101,21 @@ Template.shiftItemDropped.events({
 });
 
 Template.shiftRow.rendered = function() {
-    var now = moment().tz('America/Edmonton').format();
+    var currentUserId = Meteor.user()._id;
+    
+    var total = Shifts.find({ ownerId: currentUserId }).count();
 
-    var total = Shifts.find({ownerId: Meteor.user()._id}).count();
-    var upcoming = Shifts.find({ownerId: Meteor.user()._id, start: {$gt: now}}).count();
+    var upcoming = upcomingShiftsFor(currentUserId).count();
 
-    var attended = Shifts.find({ownerId: Meteor.user()._id, start: {$lte: now}}, {sort: {start: -1}}).count();
-    var dropped = Drops.find({ownerId: Meteor.user()._id}).count();
-    var pickedup = PickUps.find({ownerId: Meteor.user()._id}).count();
+    var attended = pastShiftsFor(currentUserId).count();
+
+    var dropped = Drops.find(
+        { ownerId: currentUserId }
+    ).count();
+
+    var pickedup = PickUps.find(
+        { ownerId: currentUserId }
+    ).count();
 
     $('#attendancePie').highcharts({
         credits: false,

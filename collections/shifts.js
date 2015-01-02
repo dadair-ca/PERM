@@ -1,6 +1,6 @@
 Shifts = new Meteor.Collection('shifts');
 
-shiftsFor = function(userId) {
+upcomingShiftsFor = function(userId) {
     return Shifts.find(
         { ownerId: userId, start: {$gt: nowInMST()} },
         { sort: {start: 1} }
