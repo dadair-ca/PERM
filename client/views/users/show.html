@@ -1,132 +1,130 @@
 <template name="usersShow">
-<div class="row">
-  {{> newShiftsModal}}
-  <div class="col-md-3 hidden-xs">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Profile</h3>
-      </div>
-      <div class="panel-body">
-        <h4>Name</h4>
-        <p>{{profile.name}}</p>
-        <h4>Joined</h4>
-        <p>{{created}}</p>
-        <h4>Roles</h4>
-        <ul>
+  <div class="row">
+    {{> newShiftsModal}}
+    <div class="col-md-3 hidden-xs">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Profile</h3>
+        </div>
+        <div class="panel-body">
+          <h4>Name</h4>
+          <p>{{profile.name}}</p>
+          <h4>Joined</h4>
+          <p>{{created}}</p>
+          <h4>Roles</h4>
           {{#each roles}}
-          <li>{{this}}</li>
+          <span class="label label-primary {{this}}">{{this}}</span>
           {{/each}}
-        </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <ul class="list-inline">
+            <li class="pull-right">
+              <button class="btn btn-sm btn-success" data-toggle="modal"
+                      data-target="#newShiftsModal">Add shifts</button>
+            </li>
+            <li>
+              <h3 class="panel-title">Upcoming Shifts</h3>
+            </li>
+          </ul>
+        </div>
+        <div class="panel-body">
+          {{#if noShifts}}
+          <p>This user has no shifts.</p>
+          {{else}}
+          <table class="table table-hover table-condensed">
+            {{> shiftTableHeader}}
+            <tbody>
+              {{#each shifts}}
+              {{> shiftItemForUser}}
+              {{/each}}
+            </tbody>
+          </table>
+          {{/if}}
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-md-9">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <ul class="list-inline">
-          <li class="pull-right">
-          <button class="btn btn-sm btn-success" data-toggle="modal"
-            data-target="#newShiftsModal">Add shifts</button>
-          </li>
-          <li>
-          <h3 class="panel-title">Upcoming Shifts</h3>
-          </li>
-        </ul>
-      </div>
-      <div class="panel-body">
-        {{#if noShifts}}
-        <p>This user has no shifts.</p>
-        {{else}}
-        <table class="table table-hover table-condensed">
-          {{> shiftTableHeader}}
-          <tbody>
-          {{#each shifts}}
-          {{> shiftItemForUser}}
-          {{/each}}
-          </tbody>
-        </table>
-        {{/if}}
-      </div>
-    </div>
-  </div>
-</div>
 </template>
 
 <template name="newShiftsModal">
-<div class="modal fade" id="newShiftsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add shifts to user</h4>
-      </div>
-      <div class="modal-body">
-        <form class="user-form">
-          <div class="container-fluid">
-            <div class="btn-group btn-group-justified" data-toggle="buttons">
-              <label class="btn btn-default active">
-                <input type="checkbox" name="weekdays" id="Sunday" checked> Su
-              </label>
-              <label class="btn btn-default">
-                <input type="checkbox" name="weekdays" id="Monday"> M
-              </label>
-              <label class="btn btn-default">
-                <input type="checkbox" name="weekdays" id="Tuesday"> Tu
-              </label>
-              <label class="btn btn-default">
-                <input type="checkbox" name="weekdays" id="Wednesday"> W
-              </label>
-              <label class="btn btn-default">
-                <input type="checkbox" name="weekdays" id="Thursday"> Th
-              </label>
-              <label class="btn btn-default">
-                <input type="checkbox" name="weekdays" id="Friday"> F
-              </label>
-              <label class="btn btn-default">
-                <input type="checkbox" name="weekdays" id="Saturday"> Sa
-              </label>
+  <div class="modal fade" id="newShiftsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add shifts to user</h4>
+        </div>
+        <div class="modal-body">
+          <form class="user-form">
+            <div class="container-fluid">
+              <div class="btn-group btn-group-justified" data-toggle="buttons">
+                <label class="btn btn-default active">
+                  <input type="checkbox" name="weekdays" id="Sunday" checked> Su
+                </label>
+                <label class="btn btn-default">
+                  <input type="checkbox" name="weekdays" id="Monday"> M
+                </label>
+                <label class="btn btn-default">
+                  <input type="checkbox" name="weekdays" id="Tuesday"> Tu
+                </label>
+                <label class="btn btn-default">
+                  <input type="checkbox" name="weekdays" id="Wednesday"> W
+                </label>
+                <label class="btn btn-default">
+                  <input type="checkbox" name="weekdays" id="Thursday"> Th
+                </label>
+                <label class="btn btn-default">
+                  <input type="checkbox" name="weekdays" id="Friday"> F
+                </label>
+                <label class="btn btn-default">
+                  <input type="checkbox" name="weekdays" id="Saturday"> Sa
+                </label>
+              </div>
+              <br />
+              <label for="fromDate">Start Date</label>
+              <input type="date" class="form-control" id="fromDate"
+                     value={{startDate}}>
+              <br />
+              <label for="toDate">End Date</label>
+              <input type="date" class="form-control" id="toDate"
+                     value={{endDate}}>
+              <br />
+              <label for="startTime">Start Time</label>
+              <input type="time" step="1800" class="form-control" id="startTime"
+                     value={{startTime}}>
+              <br />
+              <label for="endTime">End Time</label>
+              <input type="time" step="1800" class="form-control" id="endTime"
+                     value={{endTime}}>
+              <br />
+              <label for="shift-role">Shift Type</label>
+              <select class="form-control" id="shift-role">
+                {{#each roles}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+              </select>
             </div>
-            <br />
-            <label for="fromDate">Start Date</label>
-            <input type="date" class="form-control" id="fromDate"
-            value={{startDate}}>
-            <br />
-            <label for="toDate">End Date</label>
-            <input type="date" class="form-control" id="toDate"
-            value={{endDate}}>
-            <br />
-            <label for="startTime">Start Time</label>
-            <input type="time" step="1800" class="form-control" id="startTime"
-            value={{startTime}}>
-            <br />
-            <label for="endTime">End Time</label>
-            <input type="time" step="1800" class="form-control" id="endTime"
-            value={{endTime}}>
-            <br />
-            <label for="shift-role">Shift Type</label>
-            <select class="form-control" id="shift-role">
-              {{#each roles}}
-              <option value="{{this}}">{{this}}</option>
-              {{/each}}
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="newShiftsButton btn btn-success" data-dismiss="modal">Create</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="newShiftsButton btn btn-success" data-dismiss="modal">Create</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <template name="shiftItemForUser">
-<tr>
-  {{> shiftRow}}
-  <td>
-    <button class="deleteShiftButton btn btn-danger btn-sm">Delete</button>
-    <button class="dropShiftButton btn btn-warning btn-sm">Drop</button>
-  </td>
-</tr>
+  <tr>
+    {{> shiftRow}}
+    <td>
+      <button class="deleteShiftButton btn btn-danger btn-sm">Delete Shift</button>
+      <button class="dropShiftButton btn btn-warning btn-sm">Drop User</button>
+    </td>
+  </tr>
 </template>
