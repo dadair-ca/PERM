@@ -1,144 +1,144 @@
 <template name="shiftsIndex">
-<div class="row">
-  <div class="col-md-4 hidden-xs">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Your attendance stats</h3>
-      </div>
-      <div class="panel-body">
-        {{> attendanceStats}}
-      </div>
-    </div>
-  </div>
-  <div class="col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Your upcoming shifts</h3>
-      </div>
-      <div class="panel-body">
-        {{#if noneUpcoming}}
-        <p>You have no upcoming shifts.</p>
-        {{else}}
-        <table class="table table-hover table-condensed">
-          {{> shiftTableHeader}}
-          <tbody>
-          {{#each upcomingShifts}}
-          {{> shiftItemOwned}}
-          {{/each}}
-          </tbody>
-        </table>
-        {{/if}}
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Available shifts</h3>
-      </div>
-      <div class="panel-body">
-        {{#if noneAvailable}}
-        <p>There are no shifts available at this time.</p>
-        {{else}}
-        <table class="table table-hover table-condensed">
-          {{> shiftTableHeader}}
-          <tbody>
-          {{#each droppedShifts}}
-          {{> shiftItemDropped}}
-          {{/each}}
-          </tbody>
-        </table>
-        {{/if}}
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Your past shifts</h3>
-      </div>
-      <div class="panel-body">
-        {{#if noneAttended}}
-        <p>You have not yet attended any shifts.</p>
-        {{else}}
-        <table class="table table-hover table-condensed">
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Start Time</th>
-              <th>End Time</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-          {{#each expiredShifts}}
-          {{> shiftItem}}
-          {{/each}}
-          </tbody>
-        </table>
-        {{/if}}
-      </div>
-    </div>
-  </div>
-</div>
-</template>
-
-<template name="shiftItem">
-<tr>
-  {{> shiftRow}}
-</tr>
-</template>
-
-<template name="shiftItemOwned">
-<tr>
-  {{> shiftRow}}
-  <td>
-    <button class="btn btn-danger btn-sm" data-toggle="modal"
-      data-target="#{{_id}}-dropModal">Drop</button>
-
-    <div class="modal fade" id="{{_id}}-dropModal" tabindex="-1" role="dialog"
-      aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="{{_id}}-myModalLabel">Broadcast shift drop</h4>
-          </div>
-          <div class="modal-body">
-            <form class="email-form">
-              <div class="container-fluid">
-                <label for="{{_id}}-email_subject">Subject</label>
-                <input type="text" class="form-control"
-                id="{{_id}}-email_subject" value="PEMRAP Shift Available!"/>
-                <br />
-                <label for="{{_id}}-email_message">Message</label>
-                <textarea rows="5" class="form-control" id="{{_id}}-email_message">I have dropped a PEMRAP shift on {{formattedDate}} from {{startTime}} to {{endTime}}.</textarea>
-                <br />
-                <label for="{{_id}}-email_excuse">Message for Administrators</label>
-                <textarea rows="5" class="form-control" id="{{_id}}-email_excuse" placeholder="Reason for dropping shift..."></textarea>
-                <br />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="button" class="drop-button btn btn-danger" data-dismiss="modal"
-              data-id="{{_id}}">Drop</button>
-          </div>
+  <div class="row">
+    <div class="col-md-4 hidden-xs">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Your attendance stats</h3>
+        </div>
+        <div class="panel-body">
+          {{> attendanceStats}}
         </div>
       </div>
     </div>
-  </td>
-</tr>
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Your upcoming shifts</h3>
+        </div>
+        <div class="panel-body">
+          {{#if noneUpcoming}}
+          <p>You have no upcoming shifts.</p>
+          {{else}}
+          <table class="table table-hover table-condensed">
+            {{> shiftTableHeader}}
+            <tbody>
+              {{#each upcomingShifts}}
+              {{> shiftItemOwned}}
+              {{/each}}
+            </tbody>
+          </table>
+          {{/if}}
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Available shifts</h3>
+        </div>
+        <div class="panel-body">
+          {{#if noneAvailable}}
+          <p>There are no shifts available at this time.</p>
+          {{else}}
+          <table class="table table-hover table-condensed">
+            {{> shiftTableHeader}}
+            <tbody>
+              {{#each droppedShifts}}
+              {{> shiftItemDropped}}
+              {{/each}}
+            </tbody>
+          </table>
+          {{/if}}
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Your past shifts</h3>
+        </div>
+        <div class="panel-body">
+          {{#if noneAttended}}
+          <p>You have not yet attended any shifts.</p>
+          {{else}}
+          <table class="table table-hover table-condensed">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each expiredShifts}}
+              {{> shiftItem}}
+              {{/each}}
+            </tbody>
+          </table>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="shiftItem">
+  <tr>
+    {{> shiftRow}}
+  </tr>
+</template>
+
+<template name="shiftItemOwned">
+  <tr>
+    {{> shiftRow}}
+    <td>
+      <button class="btn btn-danger btn-sm" data-toggle="modal"
+              data-target="#{{_id}}-dropModal">Drop</button>
+
+      <div class="modal fade" id="{{_id}}-dropModal" tabindex="-1" role="dialog"
+           aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="{{_id}}-myModalLabel">Broadcast shift drop</h4>
+            </div>
+            <div class="modal-body">
+              <form class="email-form">
+                <div class="container-fluid">
+                  <label for="{{_id}}-email_subject">Subject</label>
+                  <input type="text" class="form-control"
+                         id="{{_id}}-email_subject" value="PEMRAP Shift Available!"/>
+                  <br />
+                  <label for="{{_id}}-email_message">Message</label>
+                  <textarea rows="5" class="form-control" id="{{_id}}-email_message">I have dropped a PEMRAP shift on {{formattedDate}} from {{startTime}} to {{endTime}}.</textarea>
+                  <br />
+                  <label for="{{_id}}-email_excuse">Message for Administrators</label>
+                  <textarea rows="5" class="form-control" id="{{_id}}-email_excuse" placeholder="Reason for dropping shift..."></textarea>
+                  <br />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" class="drop-button btn btn-danger" data-dismiss="modal"
+                      data-id="{{_id}}">Drop</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
 </template>
 
 <template name="shiftItemDropped">
-<tr>
-  {{> shiftRow}}
-  <td>
-    <button type="button" class="btn btn-success btn-sm" id="pickup-button">Pick up</button>
-  </td>
-</tr>
+  <tr>
+    {{> shiftRow}}
+    <td>
+      <button type="button" class="btn btn-success btn-sm" id="pickup-button">Pick up</button>
+    </td>
+  </tr>
 </template>
 
 <template name="attendanceStats">
-<div id="attendancePie"></div>
+  <div id="attendancePie"></div>
 </template>
 
 <template name="shiftRow">
@@ -160,13 +160,13 @@
 </template>
 
 <template name="shiftTableHeader">
-<thead>
-  <tr>
-    <th>Day</th>
-    <th>Start</th>
-    <th>End</th>
-    <th>Type</th>
-    <th>Actions</th>
-  </tr>
-</thead>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 </template>
