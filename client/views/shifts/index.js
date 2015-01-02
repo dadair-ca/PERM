@@ -1,10 +1,9 @@
 Template.shiftsIndex.helpers({
-    //upcoming shifts
     upcomingShifts: function() {
         return upcomingShiftsFor(Meteor.user()._id);
     },
     noneUpcoming: function() {
-        return upcomingShiftsFor(Meteor.user().id).count() == 0;
+        return upcomingShiftsFor(Meteor.user()._id).count() == 0;
     },
     expiredShifts: function() {
         return pastShiftsFor(Meteor.user()._id);
