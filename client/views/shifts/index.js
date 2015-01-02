@@ -26,7 +26,7 @@ Template.shiftsIndex.helpers({
   },
   userId: function() {
     return Meteor.user()._id;
-  },
+  }
 });
 
 Template.shiftItemOwned.helpers({
@@ -158,7 +158,7 @@ Template.shiftRow.rendered = function() {
       ]
     }]
   });
-}
+};
 
 Template.shiftRow.helpers({
   day: function() {
@@ -178,5 +178,5 @@ Template.shiftRow.helpers({
   },
   endMD: function() {
     return moment.tz(this.end, zone()).format("HH:mm");
-  },
+  }
 });

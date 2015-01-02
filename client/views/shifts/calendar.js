@@ -11,7 +11,7 @@ var userTitle = function(user) {
         return '★ ' + user.profile.name;
     }
     return user.profile.name;
-}
+};
 
 Template.calendar.rendered = function() {
     $('#shiftCalendar').fullCalendar({
@@ -53,7 +53,7 @@ Template.calendar.rendered = function() {
                 events.push(evt);
             });
             callback(events);
-        },
+        }
     });
     
     Meteor.autorun(function() {

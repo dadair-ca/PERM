@@ -58,5 +58,5 @@ Meteor.methods({
       subject: "A PEMRAP shift has been dropped!",
       text: content
     });
-  },
+  }
 });

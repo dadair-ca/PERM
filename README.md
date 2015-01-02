@@ -51,3 +51,4 @@ Version 1.1
 - [ ] Persistent chat log
 - [x] Administrators can specify user starting dates
 - [x] Fix time difference calculation of the calendar
+- [ ] Admins should confirm deleting a shift (could mis-click)
