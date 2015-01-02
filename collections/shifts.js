@@ -1,5 +1,26 @@
 Shifts = new Meteor.Collection('shifts');
 
+shiftsFor = function(userId) {
+    return Shifts.find(
+        { ownerId: userId, start: {$gt: nowInMST()} },
+        { sort: {start: 1} }
+    );  
+};
+
+shiftsAvailableForRoles = function(roles) {
+    return Shifts.find(
+        { ownerId: null, start: {$gt: nowInMST()}, type: {$in: roles} },
+        { sort: {start: 1} }
+    );
+};
+
+pastShiftsFor = function(userId) {
+    return Shifts.find(
+        { ownerId: userId, start: {$lte: nowInMST()} },
+        { sort: {start: -1} }
+    );
+};
+
 Meteor.methods({
   dropShift: function(shift) {
     Drops.insert({ownerId: shift.ownerId, shiftId: shift._id});
