@@ -1,5 +1,5 @@
-Development
-===========
+# Development
+
 To contribute, please fork the repository and create pull requests.
 
 The master branch should contain stable releases, tagged with the release number (1.0.0, etc).
@@ -10,10 +10,10 @@ Please use pull requests for new features.
 
 Available at [PERM](http://54.186.106.12/).
 
-TODO
-====
+# TODO
+
 - [x] Fix login buttons dropdown
-- [x] Deploy to ~~Heroku~~ EC2
+- [x] Deploy to Heroku ~~EC2~~
 - [ ] Add testing framework
 - [x] Get dynamic attendance data from user object
 - [x] Attendance chart should be ~~simple values~~ removed if window is too small
@@ -21,8 +21,8 @@ TODO
 - [x] Ensure all datetimes are generated for Mountain Time
 - [x] Should use Bootstrap grid system on /shifts so it collapses on mobile
 
-Minimum Viable Product
-----------------------
+## Minimum Viable Product
+
 - [x] Users should be able to sign in with email and password
 - [x] Users should be able to sign out
 - [x] Users should be able to see their upcoming shifts
@@ -35,8 +35,8 @@ Minimum Viable Product
 - [x] Administrators should be able to create new users
 - [x] Administrators should be able to create shifts for a student
 
-Version 1.1
------------
+## Version 1.1
+
 - [x] Users should be able to see a calendar view of all shifts
 - [x] Users should be categorized as [student, command, nurse, admin]
 - [x] Shifts should be categorized as [student, command, nurse, admin]
@@ -52,3 +52,4 @@ Version 1.1
 - [x] Administrators can specify user starting dates
 - [x] Fix time difference calculation of the calendar
 - [ ] Admins should confirm deleting a shift (could mis-click)
+- [ ] Users must have at least a first and last name
