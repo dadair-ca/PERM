@@ -49,6 +49,13 @@ Meteor.methods({
     },
     editUser: function(args) {
         Meteor.users.update(args._id, {$set: args.user});
+    },
+    adminEditUser: function(data) {
+        var args = data.args;
+        Meteor.call('editUser', args);
+
+        var user = Meteor.users.findOne({_id: args._id});
+        Roles.setUserRoles(user._id, data.role);
     }
 });
 

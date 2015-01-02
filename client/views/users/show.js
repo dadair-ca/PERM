@@ -120,3 +120,57 @@ Template.shiftItemForUser.events({
     });
   }
 });
+
+Template.editUserProfileModal.helpers({
+    formatedStartDate: function() {
+        return moment(this.profile.started).format('YYYY-MM-DD');
+    },
+    allRoles: function() {
+        return Meteor.roles.find({}, {sort: {name: -1}});
+    },
+    userIsInRole: function(user, role) {
+        return user.roles[0] === role;
+    }
+});
+
+Template.editUserProfileModal.events({
+    'click .editUserProfileButton': function(evt) {
+        evt.preventDefault();
+
+        var currentUserId = this._id;
+        console.log(this);
+
+        var data = {
+            args: {
+                _id: currentUserId,
+                user: {
+                    profile: {
+                        name: $('#userName').val(),
+                        started: $('#joinDate').val()
+                    }
+                }
+            },
+            role: $('#userRole').val()
+        };
+
+        console.log(data);
+
+        if (data.args.user.profile.name == "") {
+            throwFlash('danger', 'User name cannot be blank!');
+            return;
+        }
+
+        if (data.args.user.profile.started == "") {
+            throwFlash('danger', 'Start date cannot be blank!');
+            return;
+        }
+
+        Meteor.call('adminEditUser', data, function (err) {
+            if (err) {
+                throwFlash('danger', err.reason);
+                return;
+            }
+            throwFlash('success', 'Edited account details.');
+        });
+    }
+});
