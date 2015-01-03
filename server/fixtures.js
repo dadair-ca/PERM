@@ -32,7 +32,9 @@ if (Meteor.users.find().count() === 0) {
             password: Meteor.uuid().split('-')[0],
             profile: { 
 	              name: user.name,
-	              started: moment().format()
+	              started: moment().format(),
+                drops: 0,
+                grabs: 0
             }
         });
         

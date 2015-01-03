@@ -11,13 +11,14 @@ Accounts.validateNewUser(function (user) {
 
 Meteor.methods({
     newUser: function(user) {
-        console.log(user);
         var id = Accounts.createUser({
             email: user.email,
             password: Meteor.uuid().split('-')[0],
             profile: {
 	              name: user.name,
-	              started: moment(user.started).format()
+	              started: moment(user.started).format(),
+                drops: 0,
+                grabs: 0
             }
         });
         

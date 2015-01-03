@@ -100,21 +100,14 @@ Template.shiftItemDropped.events({
 });
 
 Template.shiftRow.rendered = function() {
-    var currentUserId = Meteor.user()._id;
+    var currentUser = Meteor.user();
+    var currentUserId = currentUser._id;
     
     var total = Shifts.find({ ownerId: currentUserId }).count();
-
     var upcoming = upcomingShiftsFor(currentUserId).count();
-
     var attended = pastShiftsFor(currentUserId).count();
-
-    var dropped = Drops.find(
-        { ownerId: currentUserId }
-    ).count();
-
-    var grabbed = Grabs.find(
-        { ownerId: currentUserId }
-    ).count();
+    var dropped = currentUser.profile.drops;
+    var grabbed = currentUser.profile.grabs;
 
     $('#attendancePie').highcharts({
         credits: false,
