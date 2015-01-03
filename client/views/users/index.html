@@ -16,6 +16,9 @@
             <tr>
               <th>Name</th>
               <th>Roles</th>
+              <th>Drops</th>
+              <th>Grabs</th>
+              <th>Net</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -40,6 +43,9 @@
   <span class="label label-primary {{this}}">{{this}}</span>
   {{/each}}
   </td>
+  <td class="negative">{{profile.drops}}</td>
+  <td class="positive">{{profile.grabs}}</td>
+  <td>{{net}}</td>
   <td><button class="btn btn-sm btn-danger" data-toggle="modal"
       data-target="#{{_id}}-confirmDeleteModal">Delete</button></td>
 </tr>
