@@ -1,1 +1,1 @@
-PickUps = new Meteor.Collection('pickups');
+Grabs = new Meteor.Collection('grabs');

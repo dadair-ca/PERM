@@ -70,7 +70,7 @@ Template.shiftItemOwned.events({
                     if (error) {
                         throwFlash('danger', 'We were unable to send your email(s) at this time.');
                     } else {
-                        throwFlash('success','The shift has been dropped. Make sure to pick up a shift to remain shift-neutral.');
+                        throwFlash('success','The shift has been dropped. Make sure to grab a shift to remain shift-neutral.');
                     }
                 });
             }
@@ -84,16 +84,16 @@ Template.shiftItemOwned.events({
 });
 
 Template.shiftItemDropped.events({
-    'click #pickup-button': function(evt) {
+    'click #grab-button': function(evt) {
         evt.preventDefault();
 
         var shiftProperties = {
             ownerId: Meteor.user()._id
         };
 
-        Meteor.call('pickupShift', this, function(error) {
+        Meteor.call('grabShift', this, function(error) {
             if (error) {
-                throwFlash('danger', 'You cannot pick up that shift.');
+                throwFlash('danger', 'You cannot grab that shift.');
             }
         });
     }
@@ -112,7 +112,7 @@ Template.shiftRow.rendered = function() {
         { ownerId: currentUserId }
     ).count();
 
-    var pickedup = PickUps.find(
+    var grabbed = Grabs.find(
         { ownerId: currentUserId }
     ).count();
 
@@ -147,7 +147,7 @@ Template.shiftRow.rendered = function() {
             data: [
                 { name: 'Attended', y: attended, color: '#C7F464' },
                 { name: 'Upcoming', y: upcoming, color: '#556270' },
-                { name: 'Picked Up', y: pickedup, color: '#4ECDC4' },
+                { name: 'Grabbed', y: grabbed, color: '#4ECDC4' },
                 {
                     name: 'Dropped',
                     y: dropped,

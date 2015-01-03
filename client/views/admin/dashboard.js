@@ -1,5 +1,5 @@
 var shiftBalance = function() {
-  return PickUps.find().count() - Drops.find().count();
+  return Grabs.find().count() - Drops.find().count();
 };
 
 var setSeriesData = function() {
@@ -9,7 +9,7 @@ var setSeriesData = function() {
   var thisYearShifts = Shifts.find({start: {$gte: currentYearStart.format()}}).fetch();
   var thisYearShiftsIds = _.map(thisYearShifts, function(shift) { return shift._id; });
   var drops = Drops.find({shiftId: {$in: thisYearShiftsIds}}).fetch();
-  var grabs = PickUps.find({shiftId: {$in: thisYearShiftsIds}}).fetch();
+  var grabs = Grabs.find({shiftId: {$in: thisYearShiftsIds}}).fetch();
 
   var droppedShifts = _.map(drops, function(drop) {
     var shift = Shifts.findOne({_id: drop.shiftId});

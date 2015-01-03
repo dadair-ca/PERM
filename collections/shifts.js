@@ -40,9 +40,9 @@ Meteor.methods({
     });
   },
 
-  pickupShift: function(shift) {
+  grabShift: function(shift) {
     var user = Meteor.user();
-    PickUps.insert({ownerId: user._id, shiftId: shift._id});
+    Grabs.insert({ownerId: user._id, shiftId: shift._id});
     Shifts.update({_id: shift._id}, {$set: {ownerId: user._id}});
   },
 
