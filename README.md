@@ -54,3 +54,8 @@ Available at [PERM](https://www.pemrap.com).
 - [x] Fix time difference calculation of the calendar
 - [ ] Admins should confirm deleting a shift (could mis-click)
 - [ ] Users must have at least a first and last name
+- [ ] User email login should be case insensitive
+- [ ] Changing user start date breaks user stat counts
+- [ ] Users should be able to reset their password without logging in
+- [ ] When an admin drops a user from a shift, the shift can't be picked up
+- [ ] Command users should be able to pick up regular student shifts
