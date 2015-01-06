@@ -41,5 +41,5 @@ Template.usersEdit.events({
             }
             throwFlash('success', 'Edited account details.');
         });
-    },
+    }
 });
