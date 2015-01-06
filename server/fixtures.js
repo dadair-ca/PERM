@@ -16,32 +16,17 @@ if (Meteor.users.find().count() === 0) {
     var roles = ['admin', 'student', 'command', 'nurse'];
     _.each(roles, function(r) { Roles.createRole(r); });
     
-    var users = [
-        {
-            name: "David Adair",
-            email: "dadair@ucalgary.ca",
-            roles:['admin', 'student']
-        },
-    ];
-    
-    _.each(users, function(user) {
-        var id;
-        
-        id = Accounts.createUser({
-            email: user.email,
-            password: Meteor.uuid().split('-')[0],
-            profile: { 
-	              name: user.name,
-	              started: moment().format(),
-                drops: 0,
-                grabs: 0
-            }
-        });
-        
-        if (user.roles.length > 0) {
-            Roles.addUsersToRoles(id, user.roles);
+    var id = Accounts.createUser({
+        email: 'dadair@ucalgary.ca',
+        password: Meteor.uuid().split('-')[0],
+        profile: { 
+	          name: 'David Adair',
+	          started: moment().format(),
+            drops: 0,
+            grabs: 0
         }
-        
-        Accounts.sendEnrollmentEmail(id);
     });
+    
+    Roles.addUsersToRoles(id, 'admin');
+    Accounts.sendEnrollmentEmail(id);
 }
