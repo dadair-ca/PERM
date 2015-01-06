@@ -138,6 +138,9 @@ Template.editUserProfileModal.events({
         evt.preventDefault();
 
         var currentUserId = this._id;
+        var drops = this.profile.drops;
+        var grabs = this.profile.grabs;
+        
         console.log(this);
 
         var data = {
@@ -146,7 +149,9 @@ Template.editUserProfileModal.events({
                 user: {
                     profile: {
                         name: $('#userName').val(),
-                        started: $('#joinDate').val()
+                        started: $('#joinDate').val(),
+                        drops: drops,
+                        grabs: grabs
                     }
                 }
             },
