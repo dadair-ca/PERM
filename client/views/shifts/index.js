@@ -12,10 +12,24 @@ Template.shiftsIndex.helpers({
         return pastShiftsFor(Meteor.user()._id).count() == 0;
     },
     droppedShifts: function() {
-        return shiftsAvailableForRoles(Meteor.user().roles);
+        var roles = Meteor.user().roles;
+
+        // If the user is a command student, allow them to pick up regular student shifts
+        if (_.contains(roles, 'command')) {
+            roles.push('student');
+        }
+        
+        return shiftsAvailableForRoles(roles);
     },
     noneAvailable: function() {
-        return shiftsAvailableForRoles(Meteor.user().roles).count() == 0;
+        var roles = Meteor.user().roles;
+
+        // If the user is a command student, allow them to pick up regular student shifts
+        if (_.contains(roles, 'command')) {
+            roles.push('student');
+        }
+        
+        return shiftsAvailableForRoles(roles).count() == 0;
     },
     userId: function() {
         return Meteor.user()._id;

@@ -55,7 +55,7 @@ Available at [PERM](https://www.pemrap.com).
 - [ ] Admins should confirm deleting a shift (could mis-click)
 - [ ] Users must have at least a first and last name
 - [ ] User email login should be case insensitive
-- [ ] Changing user start date breaks user stat counts
-- [ ] Users should be able to reset their password without logging in
-- [ ] When an admin drops a user from a shift, the shift can't be picked up
+- [x] Changing user start date breaks user stat counts
+~~- [x] Users should be able to reset their password without logging in~~
+~~- [x] When an admin drops a user from a shift, the shift can't be picked up~~
 - [ ] Command users should be able to pick up regular student shifts
