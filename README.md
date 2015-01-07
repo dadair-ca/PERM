@@ -56,6 +56,6 @@ Available at [PERM](https://www.pemrap.com).
 - [ ] Users must have at least a first and last name
 - [ ] User email login should be case insensitive
 - [x] Changing user start date breaks user stat counts
-~~- [x] Users should be able to reset their password without logging in~~
-~~- [x] When an admin drops a user from a shift, the shift can't be picked up~~
-- [ ] Command users should be able to pick up regular student shifts
+- [x] ~~Users should be able to reset their password without logging in~~
+- [x] ~~When an admin drops a user from a shift, the shift can't be picked up~~
+- [x] Command users should be able to pick up regular student shifts
