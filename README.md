@@ -59,3 +59,5 @@ Available at [PERM](https://www.pemrap.com).
 - [x] ~~Users should be able to reset their password without logging in~~
 - [x] ~~When an admin drops a user from a shift, the shift can't be picked up~~
 - [x] Command users should be able to pick up regular student shifts
+
+- [ ] Should be able to correct and reverify an email address
