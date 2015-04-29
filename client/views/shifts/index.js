@@ -18,7 +18,7 @@ Template.shiftsIndex.helpers({
         if (_.contains(roles, 'command')) {
             roles.push('student');
         }
-        
+
         return shiftsAvailableForRoles(roles);
     },
     noneAvailable: function() {
@@ -28,7 +28,7 @@ Template.shiftsIndex.helpers({
         if (_.contains(roles, 'command')) {
             roles.push('student');
         }
-        
+
         return shiftsAvailableForRoles(roles).count() == 0;
     },
     userId: function() {
@@ -116,7 +116,7 @@ Template.shiftItemDropped.events({
 Template.shiftRow.rendered = function() {
     var currentUser = Meteor.user();
     var currentUserId = currentUser._id;
-    
+
     var total = Shifts.find({ ownerId: currentUserId }).count();
     var upcoming = upcomingShiftsFor(currentUserId).count();
     var attended = pastShiftsFor(currentUserId).count();
