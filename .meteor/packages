@@ -14,11 +14,8 @@ mrt:moment-timezone
 email
 alanning:roles
 mrt:fullcalendar
-lepozepo:streams
 pfafman:font-awesome-4
 force-ssl
 
-sanjo:jasmine
 velocity:html-reporter
-dburles:collection-helpers
 meteorhacks:kadira
