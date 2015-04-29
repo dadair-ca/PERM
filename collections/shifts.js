@@ -4,7 +4,7 @@ upcomingShiftsFor = function(userId) {
     return Shifts.find(
         { ownerId: userId, start: {$gt: nowInMST()} },
         { sort: {start: 1} }
-    );  
+    );
 };
 
 shiftsAvailableForRoles = function(roles) {
