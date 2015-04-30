@@ -47,18 +47,17 @@
   <td class="positive">{{profile.grabs}}</td>
   <td>{{net}}</td>
   <td><button class="btn btn-sm btn-danger" data-toggle="modal"
-      data-target="#{{_id}}-confirmDeleteModal">Delete</button></td>
+      data-target="#{{_id}}-confirmDeleteModal">Set Inactive</button></td>
 </tr>
 <div class="modal fade" id="{{_id}}-confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <p>Please confirm deletion of {{profile.name}} ({{email}}).</p>
-        <p class="text-danger"><strong>This cannot be undone!</strong></p>
+        <p>Make {{profile.name}} ({{email}}) inactive?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button class="btn btn-danger deleteUserButton" data-dismiss="modal">Delete</button>
+        <button class="btn btn-danger deleteUserButton" data-dismiss="modal">Confirm</button>
       </div>
     </div>
   </div>

@@ -79,7 +79,7 @@ Template.userItem.events({
             if (error) {
                 throwFlash('danger', error.reason);
             } else {
-                throwFlash('success', 'Deleted user: ' + email);
+                throwFlash('success', 'User is now flagged as inactive.');
             }
         });
 

@@ -1,10 +1,10 @@
 Accounts.validateNewUser(function (user) {
     var loggedInUser = Meteor.user();
-    
+
     if (loggedInUser && Roles.userIsInRole(loggedInUser, 'admin')) {
         return true;
     }
-    
+
     throw new Meteor.Error(403, "Not authorized to create new users.");
     return false;
 });
@@ -21,32 +21,32 @@ Meteor.methods({
                 grabs: 0
             }
         });
-        
+
         if (user.roles.length > 0) {
             Roles.addUsersToRoles(id, user.roles);
         }
-        
+
         Accounts.sendEnrollmentEmail(id);
     },
     deleteUser: function(user) {
         var loggedInUser = Meteor.user();
-        
+
         if (!loggedInUser || !Roles.userIsInRole(loggedInUser, 'admin')) {
             throw new Meteor.Error(403, "Access denied.");
         }
-        
+
         if (Roles.userIsInRole(user, 'admin')) {
             throw new Meteor.Error(403, "Cannot delete the administrator.");
         }
-        
+
         var now = moment.tz('America/Edmonton').format();
         var userShifts = Shifts.find({ownerId: user._id, start: {$gte: now}});
         userShifts.forEach(function(shift) {
             Meteor.call('dropShift', shift);
         });
-        
-        Roles.setUserRoles(user, []);
-        Meteor.users.remove({_id: user._id});
+
+        Roles.setUserRoles(user, ['inactive']);
+        //Meteor.users.remove({_id: user._id});
     },
     editUser: function(args) {
         Meteor.users.update(args._id, {$set: args.user});
@@ -68,7 +68,7 @@ Meteor.methods({
 
 (function () {
     "use strict";
-    
+
     Accounts.urls.resetPassword = function(token) {
         return Meteor.absoluteUrl('reset-password/' + token);
     };
