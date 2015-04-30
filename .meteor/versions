@@ -59,6 +59,7 @@ mrt:highcharts@0.1.0
 mrt:jquery-ui@1.9.2
 mrt:moment@2.8.1
 mrt:moment-timezone@0.2.1
+msavin:jetsetter@1.0.12
 msavin:mongol@1.0.29
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
