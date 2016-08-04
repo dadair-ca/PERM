@@ -1,5 +1,3 @@
-[![Code   Climate](https://codeclimate.com/repos/55419e73e30ba008e501cd0c/badges/970fab2541f6aabd3a97/gpa.svg)](https://codeclimate.com/repos/55419e73e30ba008e501cd0c/feed)
-
 # Development
 
 To contribute, please fork the repository and create pull requests.
