@@ -3,22 +3,25 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-standard-app-packages
+standard-app-packages@1.0.9
 mizzao:bootstrap-3
 iron:router
-accounts-password
+accounts-password@1.3.0
 sacha:spin
 mrt:moment
 mrt:highcharts
 mrt:moment-timezone
-email
+email@1.1.17
 alanning:roles
 mrt:fullcalendar
 pfafman:font-awesome-4
-force-ssl
+force-ssl@1.0.12
 
 velocity:html-reporter
 meteorhacks:kadira
 mike:mocha
 msavin:mongol
 msavin:jetsetter
+standard-minifier-css
+standard-minifier-js
+shell-server

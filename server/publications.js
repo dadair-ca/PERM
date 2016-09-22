@@ -1,9 +1,13 @@
 Meteor.publish('shifts', function() {
-  return Shifts.find();
+    // for performance reasons, don't publish all historical data
+    var cutoff = moment().subtract(1, 'months').format();
+    return Shifts.find({start: {$gt: cutoff}});
 });
+
 Meteor.publish('userData', function() {
-  return Meteor.users.find({}, {fields: {emails: 1, roles: 1, profile: 1}});
+    return Meteor.users.find({}, {fields: {emails: 1, roles: 1, profile: 1}});
 });
+
 Meteor.publish(null, function() {
-  return Meteor.roles.find({});
+    return Meteor.roles.find({});
 });
