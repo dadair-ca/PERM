@@ -1,6 +1,6 @@
 Meteor.publish('shifts', function() {
     // for performance reasons, don't publish all historical data
-    var cutoff = moment().subtract(1, 'months').format();
+    var cutoff = moment().subtract(4, 'months').format();
     return Shifts.find({start: {$gt: cutoff}});
 });
 
