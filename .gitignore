@@ -1,2 +1,3 @@
 tests/jasmine/server/unit/package*
 .deploy/**
+.idea/

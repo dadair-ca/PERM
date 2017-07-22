@@ -18,7 +18,6 @@ pfafman:font-awesome-4
 force-ssl@1.0.12
 
 velocity:html-reporter
-meteorhacks:kadira
 mike:mocha
 msavin:mongol
 msavin:jetsetter

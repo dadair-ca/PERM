@@ -52,8 +52,6 @@ localstorage@1.0.11
 logging@1.1.15
 meteor@1.2.17
 meteor-platform@1.2.6
-meteorhacks:kadira@2.30.0
-meteorhacks:meteorx@1.4.1
 meteortoys:toykit@2.2.1
 mike:mocha@0.6.6
 mike:mocha-core@0.1.0
@@ -66,7 +64,6 @@ modules@0.7.6
 modules-runtime@0.7.6
 mongo@1.1.12
 mongo-id@1.0.5
-mongo-livedata@1.0.12
 mrt:fullcalendar@1.6.1
 mrt:highcharts@0.1.0
 mrt:jquery-ui@1.9.2
