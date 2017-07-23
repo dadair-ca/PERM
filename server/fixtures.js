@@ -34,7 +34,5 @@ if (Meteor.users.find().count() === 0) {
 Meteor.startup(function () {
     try {
         Roles.createRole('inactive');
-    } catch (e) {
-        console.log(e);
-    }
+    } catch (e) {}
 });

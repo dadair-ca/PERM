@@ -47,8 +47,6 @@ Template.usersIndex.events({
             started: $('#user-start').val()
         };
 
-        console.log(user);
-
         if (user.email == "") {
             throwFlash('danger', 'Please enter an email address for the user.');
         }

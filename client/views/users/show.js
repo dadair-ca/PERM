@@ -10,7 +10,6 @@ Template.usersShow.helpers({
         return this.roles;
     },
     created: function() {
-        console.log(this);
         return moment(this.profile.started).format('dddd, MMMM Do YYYY');
     },
 });
@@ -145,8 +144,6 @@ Template.editUserProfileModal.events({
         var drops = this.profile.drops;
         var grabs = this.profile.grabs;
 
-        console.log(this);
-
         var data = {
             args: {
                 _id: currentUserId,
@@ -161,8 +158,6 @@ Template.editUserProfileModal.events({
             },
             role: $('#userRole').val()
         };
-
-        console.log(data);
 
         if (data.args.user.profile.name == "") {
             throwFlash('danger', 'User name cannot be blank!');
