@@ -85,5 +85,20 @@ Template.userItem.events({
         // since the DOM is messed up after a reactive refresh and bootstrap
         // can't find the necessary elements to remove by itself
         $('.modal-backdrop').remove();
+    },
+
+    'click .resetUserPasswordButton': function(evt) {
+        evt.preventDefault();
+
+        var email = this.emails[0].address;
+        var options = {email: email};
+
+        Accounts.forgotPassword(options, function(err) {
+            if (err) {
+                throwFlash('danger', err.reason);
+            } else {
+                throwFlash('success', 'An email has been sent to the specified address which will allow the user to reset their password.');
+            }
+        });
     }
 });

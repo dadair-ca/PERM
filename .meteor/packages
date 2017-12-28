@@ -15,13 +15,13 @@ email@1.2.3
 alanning:roles
 mrt:fullcalendar
 pfafman:font-awesome-4
-force-ssl@1.0.14
+force-ssl@1.0.15
 
 velocity:html-reporter
 mike:mocha
 msavin:mongol
 msavin:jetsetter
-standard-minifier-css@1.3.4
-standard-minifier-js@2.1.1
+standard-minifier-css@1.3.5
+standard-minifier-js@2.1.2
 shell-server@0.2.4
-dynamic-import
+dynamic-import@0.1.3

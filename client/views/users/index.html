@@ -15,10 +15,11 @@
           <thead>
             <tr>
               <th>Name</th>
+              <th>Primary Email</th>
               <th>Roles</th>
               <th>Drops</th>
               <th>Grabs</th>
-              <th>Net</th>
+              <th>Balance</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -37,6 +38,7 @@
 <template name="userItem">
 <tr>
   <td><a href="{{pathFor 'usersShow'}}">{{profile.name}}</a></td>
+  <td>{{emails.[0].address}}</td>
   <td>
   <!--{{rolesList}}-->
   {{#each roles}}
@@ -46,14 +48,33 @@
   <td class="negative">{{profile.drops}}</td>
   <td class="positive">{{profile.grabs}}</td>
   <td>{{net}}</td>
-  <td><button class="btn btn-sm btn-danger" data-toggle="modal"
-      data-target="#{{_id}}-confirmDeleteModal">Set Inactive</button></td>
+  <td>
+      <button class="btn btn-sm btn-danger" data-toggle="modal"
+              data-target="#{{_id}}-confirmDeleteModal">Deactivate Account</button>
+      <button class="btn btn-sm btn-warning" data-toggle="modal"
+              data-target="#{{_id}}-confirmResetPasswordModal">Reset Password</button>
+  </td>
 </tr>
+
+<div class="modal fase" id="{{_id}}-confirmResetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Send reset password email to {{profile.name}} ({{email}})?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-warning resetUserPasswordButton" data-dismiss="modal">Reset Password</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="{{_id}}-confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <p>Make {{profile.name}} ({{email}}) inactive?</p>
+        <p>Deactivate account for {{profile.name}} ({{email}})?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
